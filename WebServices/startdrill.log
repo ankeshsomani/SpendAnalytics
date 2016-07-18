@@ -1,0 +1,26 @@
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=512M; support was removed in 8.0
+Jun 28, 2016 1:00:38 AM org.glassfish.jersey.server.ApplicationHandler initialize
+INFO: Initiating Jersey application, version Jersey: 2.8 2014-04-29 01:25:26...
+apache drill 1.6.0 
+"got drill?"
+0: jdbc:drill:zk=local> 
+Command canceled.
+0: jdbc:drill:zk=local> 
+Command canceled.
+0: jdbc:drill:zk=local> 
+Command canceled.
+0: jdbc:drill:zk=local> java.io.IOException: Input/output error
+	at java.io.FileInputStream.read0(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:207)
+	at jline.internal.NonBlockingInputStream.read(NonBlockingInputStream.java:169)
+	at jline.internal.NonBlockingInputStream.read(NonBlockingInputStream.java:137)
+	at jline.internal.NonBlockingInputStream.read(NonBlockingInputStream.java:246)
+	at jline.internal.InputStreamReader.read(InputStreamReader.java:259)
+	at jline.internal.InputStreamReader.read(InputStreamReader.java:196)
+	at jline.console.ConsoleReader.readCharacter(ConsoleReader.java:2002)
+	at jline.console.ConsoleReader.readLine(ConsoleReader.java:2206)
+	at jline.console.ConsoleReader.readLine(ConsoleReader.java:2126)
+	at sqlline.SqlLine.begin(SqlLine.java:621)
+	at sqlline.SqlLine.start(SqlLine.java:375)
+	at sqlline.SqlLine.main(SqlLine.java:268)
+Closing: org.apache.drill.jdbc.impl.DrillConnectionImpl

@@ -1,0 +1,8 @@
+Below node modules needs to be installed
+assert
+body-parser
+express
+http
+mongodb
+node-rest-client
+shortid

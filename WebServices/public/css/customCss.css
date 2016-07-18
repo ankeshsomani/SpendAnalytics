@@ -1,0 +1,562 @@
+.PL-0
+{
+	padding-left:0px;
+}
+
+.PR-0
+{
+	padding-right:0px;
+}
+
+.PT-0
+{
+	padding-top:0px;
+}
+
+.PLR-0
+{
+	padding-left:0px;
+	padding-right:0px;
+}
+
+.PB-15
+{
+	padding-bottom:15px;
+}
+
+.MLR-0
+{
+	margin-left:0px;
+	margin-right:0px;
+}
+
+.ML-5
+{
+	margin-left:5px;
+}
+
+.MR-10
+{
+	margin-right:10px;
+}
+
+.MR-15
+{
+	margin-right:15px;
+}
+
+.MR-30
+{
+	margin-right:30px;
+}
+
+.ML-10
+{
+	margin-left:10px;
+}
+
+.ML-15
+{
+	margin-left:15px;
+}
+
+.ML-25
+{
+	margin-left:25px;
+}
+
+.padding-right-18
+{
+	padding-right:18px !important;
+}
+
+.MT-15
+{
+	margin-top:15px;
+}
+
+.MT-20
+{
+	margin-top:20px;
+}
+
+.MB-5
+{
+	margin-bottom:5px;
+}
+
+.MB-20
+{
+	margin-bottom:20px;
+}
+
+.font-12
+{
+	font-size:12px;
+}
+
+input[type="date"]
+{
+	line-height:20px;
+}
+
+#login_container
+{
+	/* margin: 23% 20% auto; 
+	width: 64%;*/
+	border: 1px solid;
+	background:#009990;
+	height:180vh;
+	width:100%;
+}
+
+.login-section
+{
+	width:80%;
+	margin:0 10% auto;
+}
+
+.login-section img
+{
+	height:200px;
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:15px;
+}
+
+.login-form .input-group-addon
+{
+	padding:15px;
+}
+
+.login-form .input-group-addon i
+{
+	font-size:20px;
+}
+
+.login-form .form-control
+{
+	padding:32px;
+}
+
+.loginBtn
+{
+	width:100%;
+	margin-bottom:15px;
+	background-color:#357EE1 !important;
+	padding:18px;
+}
+			
+/*.nav-section
+{
+	width:12%;
+}
+
+.chart-section
+{
+	width:80%;
+}*/
+
+.user-profile
+{
+	height:70px;
+	width:50px;
+	border-width: 3px 0px 3px 3px;
+	border-style: solid;
+	border-color: black
+}
+
+.user-profile i
+{
+	font-size:30px;
+	color:#308ac8;
+	padding:15px 0px 0px 12px;
+}
+
+.user-personal-details ul
+{
+	padding-left:0px;
+	padding-bottom:10px;
+	border-bottom:2px solid #FFF
+}
+
+.user-personal-details ul li
+{
+	list-style-type:none;
+	font-size:16px;
+	font-weight:bold;
+	color:#FFF;
+}
+
+#user_details
+{
+	position:absolute;
+	z-index:1;
+	background-color:#308AC8;
+	margin-left:15px;
+	color:#FFF;
+	width:75%;
+	border:1px solid #000;
+}
+
+#user_details img
+{
+	height: 100px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#user_details a
+{
+	color:#FFF;
+	font-size:16px;
+	font-weight:bold;
+}
+
+#user_details i
+{
+	color:#FFF;
+	font-size:16px;
+	padding-right:15px;
+}
+
+#user_details  i.fa-facebook-square
+{
+	color:blue;
+}
+
+.icon_for_charts_section
+{
+	padding-top:15px;
+	padding-bottom:15px;
+	bordeR:3px solid;
+	border-radius:5px;
+	margin-top:20px;
+	background-color:#009990;
+	padding-left: 6%;
+	width: 76%;
+}
+
+.icon_for_charts_section span:first-child
+{
+	margin-left:0px;
+}
+
+.icon_for_charts_section span
+{
+	margin-left:34px;
+	/* margin-right:20px; */
+	width:14%;
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+.icon_for_charts_section i
+{
+	font-size:32px;
+	color:#000;
+}
+
+
+.icon_for_charts_section a:hover i
+{
+	font-size:36px;
+}
+
+.icon_for_charts_section span div:last-child
+{
+	text-align:left;
+	font-size:12px;
+	color:#FFF
+}
+/*.icon_for_charts_section span:first-child i
+{
+	color:green;
+}*/
+
+/* 
+#dashboard-container
+{
+	background-color:#3ca5d4;
+} */
+
+.chart_icons
+{
+	margin-left:18%;
+}
+
+#pie-column-chart-section,#line-chart-section,#combination-chart-section
+{
+	margin-left: 30px;
+	margin-right: 15px;
+}
+
+#pie-chart,#line-chart,#column-chart,#line-chart2,#combination-chart
+{
+	/*border:1px solid #DDD;
+	border-radius:5px;*/
+	height:590px;
+}
+
+.total_expense
+{
+	font-size:20px;
+	font-weight:bold;
+	margin-bottom:15px;
+	color:#009990;
+}
+
+.total_expense span:first-child
+{
+	padding-left:30px;
+}
+
+.total_expense span:not(:last-child)
+{
+	vertical-align:middle;
+}
+
+.total_expense span:last-child label
+{
+	font-size:14px;
+}
+
+.chart_section
+{
+	border:3px solid;
+	border-radius:5px;
+	background-color:#FFF;
+	height:680px;
+}
+
+.chart_section h3,#transaction-div h3
+{
+	color:#009990;
+	font-size:20px;
+	font-weight:bold;
+}
+
+.chart_section label
+{
+	padding-top:15px;
+	color:#009990;
+}
+
+#sidebar-wrapper
+{
+	background-color:#3A3A4F;
+	height:100vh;
+	/*width:100%;*/
+	position:absolute;
+	z-index:1;
+}
+
+#sidebar-wrapper ul li
+{
+	background-color:#3A3A4F;
+	padding:10px;
+}
+
+.select-control
+{
+	padding:0px;
+	width:60px
+}
+
+.login-container
+{
+	margin:0 auto;
+	width:750px;
+	margin-top:25px;
+}
+.sidebar-nav
+{
+	padding-left:5px;
+}
+
+.sidebar-nav li a i
+{
+	margin-right:10px;
+}
+
+.sidebar-nav li.active a
+{
+	/*background-color:#FFF !important;*/
+	color:#FFF;
+	font-weight:bold;
+}
+
+#transaction-div
+{
+	margin:20px 15px 0px 30px;
+	border:3px solid;
+	padding-top:15px;
+	border-radius:5px;
+	background-color:#FFF;
+	height: 680px;
+	overflow-y: scroll;
+}
+
+#transaction-div h3
+{
+	margin-top:0px;
+	margin-left:15px;
+	margin-bottom:5px;
+	padding-left:0px;
+}
+
+.arrow
+{
+	width: 45px;
+	height: 45px;
+	margin: 184px 0 auto;
+	position:absolute;
+	z-index:1;
+}
+
+button
+{
+	background-color:#009990 !important;
+}
+
+.arrow .toggle-menu i
+{
+	font-size:40px;
+}
+
+.help-text
+{
+	color:red;
+	font-size:16px;
+	padding-bottom:20px;
+}
+/**Nav section for mobile**/
+
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+	padding:5px 0px;
+    overflow: hidden;
+	background-color:#009990;
+	border:3px solid;
+}
+
+/* Float the list items side by side */
+ul.topnav li {float: left;}
+
+ul.topnav li.selected_menu
+{
+	font-size:18px;
+	font-weight:bold;
+	width:90%;
+}
+
+/* Style the links inside the list items */
+ul.topnav li a {
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 13px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 20px;
+}
+
+ul.topnav li:not(:first-child)
+{
+	 display: none;
+}
+ul.topnav li.icon 
+{
+	float: right;
+	display: inline-block;
+}
+
+
+/* Change background color of links on hover */
+ul.topnav li a:hover
+{
+	background-color: #111;
+}
+
+/* Hide the list item that contains the link that should open and close the topnav on small screens */
+/*ul.topnav li.icon {display: none;}*/
+
+ul.topnav.responsive
+{
+	position: relative;
+}
+
+ul.topnav.responsive li.icon
+{
+	position: absolute;
+	right: 0;
+	top: 0;
+	display:inline-block;
+}
+
+ul.topnav.responsive li 
+{
+	float: none;
+	display: inline;
+}
+ul.topnav.responsive li a
+{
+	display: block;
+	text-align: left;
+}
+
+.addTransactBtn
+{
+	width:100%;
+}
+
+#addTransaction .modal-header,#editTransactionModal .modal-header
+{
+	background-color:#009990;
+	color:#FFF;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+}
+
+#addTransaction .modal-content
+{
+	width:78%;
+	top:300px;
+	border: 1px solid #009990;
+	border-radius: 8px;
+}
+
+#editTransactionModal .modal-content
+{
+	width:78%;
+	border: 1px solid #009990;
+	border-radius: 8px;
+}
+
+#addTransaction label,#editTransactionModal label
+{
+	color:#009990;
+}
+
+.searchBtn
+{
+	border: 1px solid #009990;
+	border-radius: 6px;
+}
+
+.searchBtn .input-group-addon
+{
+	border: 0;
+	background-color: #009990;
+	color: #FFF;
+}
+
+.searchBtn .form-control
+{
+	border:0;
+}
