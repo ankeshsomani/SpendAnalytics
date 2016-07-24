@@ -22,6 +22,7 @@ require('./listCustomerDetails')(app,client,url);
 require('./listCategorySubcategoryExpense')(app,client,url);
 require('./AvgSpendCategory')(app,client,url);
 require('./addTransactions')(app,client,url);
+require('./updateTransaction')(app,client,url);
 
 
 var server = app.listen(8081, function () {

@@ -1,0 +1,47 @@
+create table employee(eid int,name String,salary String,destination String) ROW FORMAT DELIMITED
+   FIELDS TERMINATED by ','
+    LINES TERMINATED By '\n'
+    STORED AS TEXTFILE;
+	
+	ALTER TABLE employee SET TBLPROPERTIES ('transactional'='true');
+alter table employee set TBLPROPERTIES("NO_AUTO_COMPACTION"="true");
+
+
+https://archive.apache.org/dist/hive/hive-0.14.0/
+
+update testTableNew set name = 'updateRow2' where id = 2;
+update testTableNew set name = 'updateRow2' where id = 2;
+http://172.16.237.138:8084/OCRService.svc/RecognizeFromUrlString?urlString=file://172.16.213.34/Shared/bankstat.jpg&lang=eng
+
+["UrlString": "file://172.16.213.34/Shared/bankstat.jpg","lang": "eng"]
+
+http://172.16.213.34:8084/OCRService.svc/help
+use spendanalytics
+db.createCollection("customers");
+db.createCollection("category");
+db.createCollection("account");
+db.createCollection("customers");
+db.createCollection("transactions");
+db.createCollection("users");
+db.createCollection("day");
+db.transactioncounter.insert(
+   {
+      _id: "transactionid",
+      seq: 1210
+   }
+)
+db.category.remove({});
+db.customers.remove({});
+db.account.remove({});
+db.bankacctransactions.remove({});
+db.users.remove({});
+db.day.remove({});
+mongoimport --db spendanalytics --collection customers --type csv --headerline --file /usr/local/spendanalytics/MongoDataFiles/Dim_Customer.csv
+mongoimport --db spendanalytics --collection account --type csv --headerline --file /usr/local/spendanalytics/MongoDataFiles/Dim_Account.csv
+mongoimport --db spendanalytics --collection users --type csv --headerline --file /usr/local/spendanalytics/MongoDataFiles/Dim_User.csv
+mongoimport --db spendanalytics --collection category --type csv --headerline --file /usr/local/spendanalytics/MongoDataFiles/Dim_Category.csv
+mongoimport --db spendanalytics --collection days --type csv --headerline --file /usr/local/spendanalytics/MongoDataFiles/Dim_Day.csv
+mongoimport --db spendanalytics --collection transactions --type csv --headerline --file /usr/local/spendanalytics/MongoDataFiles/bankacctransactions.csv
+
+
+mongoimport --db spendanalytics --collection bankacctransactions --type csv --headerline --file /usr/local/spendanalytics/datafiles/bankacctransactionsnew.csv
