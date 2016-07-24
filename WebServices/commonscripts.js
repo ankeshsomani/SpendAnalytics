@@ -11,7 +11,7 @@ var daysPassed=(firstWeekEndDate-yearStart) / (1000 * 60 * 60 * 24);
 var firstWeekNumber=Math.ceil(daysPassed/7);
 return firstWeekNumber;
 }
-exports.baseQueryUrl="http://45.55.195.106:8047/query.json";
+exports.baseQueryUrl="http://localhost:8047/query.json";
 exports.listExpensesByCategoryWeekly='/listExpensesByCategoryWeekly';
 exports.listExpensesByCategoryMonthly='/listExpensesByCategoryMonthly';
 exports.listExpensesByCategoryYearly='/listExpensesByCategoryYearly';
@@ -28,3 +28,6 @@ exports.listExpensesByWeek='/listExpensesByWeek';
 exports.listCustomerDetails='/listCustomerDetails';
 exports.listCategorySubcategoryExpense='/listCategorySubcategoryExpense';
 exports.AvgSpendCategory='/AvgSpendCategory';
+exports.addTransactions='/addTransactions';
+exports.mongoUrl='mongodb://localhost:27017/spendanalytics';
+

@@ -11,7 +11,7 @@ res.setHeader('Access-Control-Allow-Origin', '*');
 	 if ((typeof cif !== "undefined") && (cif !== null)){
 
 			  		 validated=true;
-					 query="select CUST.Cust_Name,CUST.Cust_Contact,CUST.Cust_Email from hdfs.tmp.vw_mongo_customers CUST where CUST.cif ="+cif+" ";
+					 query="select CUST.Cust_Name,CUST.Cust_Contact,CUST.Cust_Email from dfs.tmp.vw_mongo_customers CUST where CUST.cif ="+cif+" ";
 
 		 }
 		 else{

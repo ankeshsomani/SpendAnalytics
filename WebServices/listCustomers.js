@@ -5,10 +5,10 @@ var path=common.listCustomers;
 app.get(path, function (req, res) {
 var x=req.query['cif'];
 	
-	var query="select * from hdfs.tmp.vw_dim_customer";
+	var query="select * from dfs.tmp.vw_dim_customer";
 	 if ((typeof x !== "undefined") && (x !== null)){
 	 console.log('here');
-		query="select * from hdfs.tmp.vw_mongo_customers where cif ="+x;
+		query="select * from dfs.tmp.vw_mongo_customers where cif ="+x;
 	 }
 	var args1_js = {
 	data:{"queryType": "SQL",

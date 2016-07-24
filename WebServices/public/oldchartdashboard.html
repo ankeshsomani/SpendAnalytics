@@ -1,0 +1,350 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Spend Analytics</title>
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		
+		<!-- Optional theme -->
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="css/bootstrap-select.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/jquery-2.1.0.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
+		<script src="js/bootstrap-select.min.js"></script>
+        <script src="js/highcharts.js"></script>
+		<script src="js/drilldown.js"></script>
+		<script type="text/javascript" src="js/ChartDashboard.js"></script>
+    </head>
+    <body>
+		<div class="container-fluid paddLR0">
+			<header>
+				<ul>
+					<li class="hamburger-menu col-xs-1 col-sm-1 col-md-1">
+						<a href=""><img src="img/nav_icn.png" class="img-responsive" /></a>
+						<div class="hamburger-submenu">
+							<ul>
+								<li class="user-profile">
+									<div class="col-sm-3 col-xs-3">
+										<img src="img/user_icn.png" style="width:48px">
+									</div>
+									<div class="col-sm-9 col-xs-9">
+										<div class="user_name">John Doe</div>
+										<div class="user_mob_no">john.doe@gmail.com</div>
+										<div class="user_mail_id">+1-143-098675</div>
+									</div>
+								</li>
+								<li><a href="javascript:void(0)"><img src="img/dashboard_icn.png" width="16px" />Dashboard</a></li>
+								<li><a href="javascript:void(0)"><img src="img/report_icn.png" width="16px" />Reports</a></li>
+								<li><a href="javascript:void(0)"><img src="img/budget_icn.png" width="16px" />Budgets</a></li>
+								<li><a href="javascript:void(0)"><img src="img/forecast_icn.png" width="16px" />Forecast</a></li>
+								<li><a href="javascript:void(0)"><img src="img/accounts_icn.png" width="16px" />Accounts</a></li>
+								<li><a href="javascript:void(0)"><img src="img/reminder_icn.png" width="16px" />Reminders</a></li>
+								<li><a href="javascript:void(0)"><img src="img/tags_icn.png" width="16px" />Tags</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="app-title col-xs-9 col-sm-9 col-md-9"><h3>Spend Analytics</h3></li>
+					<li class="expense-menu col-xs-1 col-sm-1 col-md-1">
+						<a href=""><img src="img/expense_icn.png" class="img-responsive" /></a>
+						<div class="expense-submenu">
+							<ul>
+								<li class="user-profile"><a href="javascript:void(0)" class="showChart" data-rel="#pie_chart_section"><img src="img/coins_icn.png" width="16px" />Change Currency</a></li>
+								<li><a href="javascript:void(0)" href="javascript:void(0)" class="showChart" data-rel="#pie_chart_section"><img src="img/percent_icn.png" width="16px" />Expense Percentage</a></li>
+								<li><a href="javascript:void(0)" class="showChart" data-rel="#bar_chart_section"><img src="img/monthexp_icn.png" width="16px" />Monthly Expense</a></li>
+								<li><a href="javascript:void(0)" class="showChart" data-rel="#transaction-div"><img src="img/weekCompare_icn.png" width="16px" />Weekly Comparison</a></li>
+								<li><a href="javascript:void(0)" class="showChart" data-rel="#line-chart-section"><img src="img/catgCompare_icn.png" width="16px" />Categorywise Comparison</a></li>
+								<li><a href="javascript:void(0)" class="showChart" data-rel="#combination-chart-section"><img src="img/transSummary_icn.png" width="16px" />Transaction Summary</a></li>
+								<li><a href="javascript:void(0)" class="showChart" data-rel="#average_chart_section"><img src="img/avg%20expense.png" width="16px" />Average Category Expense</a></li>
+								<li><a href="javascript:void(0)" class="showChart" data-rel="#SplinewithSymbol-chart-section"><img src="img/monthly%20variation.png" width="16px" />Monthly average Expense</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="user-menu col-xs-1  col-sm-1 col-md-1">
+						<a href=""><img src="img/userProfile_icn.png" class="img-responsive" /></a>
+						<div class="user-submenu">
+							<ul>
+								<li class="user-profile">
+									<div class="col-sm-3 col-xs-3">
+										<img src="img/user_icn.png" style="width:48px">
+									</div>
+									<div class="col-sm-9 col-xs-9">
+										<div class="user_name">John Doe</div>
+										<div class="user_mob_no">john.doe@gmail.com</div>
+										<div class="user_mail_id">+1-143-098675</div>
+									</div>
+								</li>
+								<li><a href=""><img src="img/Profile_icn.png" width="16px" />Profile</a></li>
+								<li><a href=""><img src="img/refer_icn.png" width="16px" />Refer Friends</a></li>
+								<li><a href=""><img src="img/notification_icn.png" width="16px" />Notifications</a></li>
+								<li><a href=""><img src="img/setting_icn.png" width="16px" />Settings</a></li>
+								<li class="seperator"></li>
+								<li><a href=""><img src="img/logouot_icn.png" width="16px" />Logout</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</header>
+			<div class="clear"></div>
+			<section class="expense-bar">
+				<div class="row">
+					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+						<div class="col-xs-5 col-sm-5">
+							<select name="month_for_catwaise_expense" id="month_for_catwaise_expense" class="form-control selectpicker col-sm-5">
+								<option value="Jan">Jan</option>
+								<option value="Feb">Feb</option>
+								<option value="Mar">Mar</option>
+								<option value="Apr">Apr</option>
+								<option value="May">May</option>
+								<option value="Jun" selected>Jun</option>
+								<option value="Jul">Jul</option>
+								<option value="Aug">Aug</option>
+								<option value="Sep">Sep</option>
+								<option value="Oct">Oct</option>
+								<option value="Nov">Nov</option>
+								<option value="Dec">Dec</option>
+							</select>
+						</div>
+						<div class="col-xs-5 col-sm-5">
+							<select name="year_for_catwaise_expense" id="year_for_catwaise_expense" class="form-control selectpicker col-sm-5">
+								<option value="2014">2014</option>
+								<option value="2015">2015</option>
+								<option value="2016" selected>2016</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 total_expense">
+						<span>Total Expense <br><span>&pound;</span> </span><span id="total_expense_val">12345</span>
+					</div>
+				</div>
+			</section>
+			<section class="chart-container">
+				<div class="panel-group" role="tablist" aria-multiselectable="true" id="pie_chart_section">
+					<div class="panel panel-default chart_section">
+						<div class="panel-heading" role="tab" id="headingOne">
+							<h4 class="panel-title">
+								<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseExpPer" aria-expanded="true" aria-controls="collapseExpPer">
+								  Expense Percentage
+								</a>
+							</h4>
+						</div>
+						<div id="collapseExpPer" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+							<div class="panel-body">
+								<div class="help-text">* Click Category on pie chart to view its sub-category partition.</div>
+								<div class="" id="pie-chart"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="panel-group" role="tablist" aria-multiselectable="true" id="bar_chart_section">
+					<div class="panel panel-default chart_section">
+						<div class="panel-heading" role="tab" id="headingOne">
+							<h4 class="panel-title">
+								<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseMonExp" aria-expanded="true" aria-controls="collapseMonExp">
+								  Monthly Expense
+								</a>
+							</h4>
+						</div>
+						<div id="collapseMonExp" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+							<div class="panel-body">
+								<div class="" id="column-chart"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel-group" role="tablist" aria-multiselectable="true" id="transaction-div">
+					<div class="panel panel-default chart_section">
+						<div class="panel-heading" role="tab" id="headingOne">
+							<h4 class="panel-title">
+								<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTransSumm" aria-expanded="true" aria-controls="collapseTransSumm">
+								  Transaction Summary
+								</a>
+							</h4>
+						</div>
+						<div id="collapseTransSumm" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+							<div class="panel-body">
+								<div class="col-sm-12 col-xs-12">
+									<div class="col-xs-6 PL-0">
+										<button type="button" class="btn btn-primary pull-left addTransactBtn" data-toggle="modal" data-target="#addTransaction">Add Cash Transaction</button>
+									</div>
+									<div class="col-xs-6 PL-20">
+										<div class="input-group searchBtn">
+											<div class="input-group-addon"><i class="fa fa-search"></i></div>
+											<input type="text" class="form-control" id="search" placeholder="Search">
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-12 MT-20 actionBtn hide">
+									<button type="button" class="btn btn-primary editTransaction">Edit</button>
+									<button type="button" class="btn btn-primary deleteTransaction">Delete</button>
+								</div>
+								<div class="col-xs-12 col-md-12">
+									<div class=" MT-15">
+										<table class="table" id="transactions_table">
+											<thead>
+												<tr>
+													<th></th>
+													<th>Date</th>
+													<th>Description</th>
+													<th>Amount (£)</th>
+													<th>Tags</th>
+													<th></th>
+												</tr>
+											</thead>
+											<tbody id="transactions_table_data"></tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="panel-group" role="tablist" aria-multiselectable="true" id="line-chart-section">
+					<div class="panel panel-default chart_section">
+						<div class="panel-heading" role="tab" id="headingOne">
+							<h4 class="panel-title">
+								<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseWeeklyComp" aria-expanded="true" aria-controls="collapseWeeklyComp">
+								  Weekly Comparison
+								</a>
+							</h4>
+						</div>
+						<div id="collapseWeeklyComp" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+							<div class="panel-body">
+								<span class="col-xs-9 text-right">
+									<label>Month
+										<select class="form-control select-control comparison_selector ML-5" id="first_month_selection">
+											<option value="1">Jan</option>
+											<option value="2">Feb</option>
+											<option value="3">Mar</option>
+											<option value="4">Apr</option>
+											<option value="5">May</option>
+											<option  value="6" selected>Jun</option>
+											<option value="7">Jul</option>
+											<option value="8">Aug</option>
+											<option value="9">Sep</option>
+											<option value="10">Oct</option>
+											<option value="11">Nov</option>
+											<option value="12">Dec</option>
+										</select>
+									</label>
+									<label>Year
+										<select class="form-control select-control comparison_selector" id="first_year_selection">
+											<option>2014</option>
+											<option selected>2015</option>
+											<option>2016</option>
+										</select>
+									</label>
+									vs
+									<label>Month
+										<select class="form-control select-control ML-5 comparison_selector" id="second_month_selection">
+											<option value="1">Jan</option>
+											<option value="2">Feb</option>
+											<option value="3">Mar</option>
+											<option value="4">Apr</option>
+											<option value="5">May</option>
+											<option  value="6" selected>Jun</option>
+											<option value="7">Jul</option>
+											<option value="8">Aug</option>
+											<option value="9">Sep</option>
+											<option value="10">Oct</option>
+											<option value="11">Nov</option>
+											<option value="12">Dec</option>
+										</select>
+									</label>
+									<label>Year
+										<select class="form-control select-control comparison_selector" id="second_year_selection">
+											<option>2014</option>
+											<option>2015</option>
+											<option selected>2016</option>
+										</select>
+									</label>
+								</span>
+								<div class="col-xs-12" id="line-chart2"><b>Loading Expense Comparison...</b></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="panel-group" role="tablist" aria-multiselectable="true" id="combination-chart-section">
+					<div class="panel panel-default chart_section">
+						<div class="panel-heading" role="tab" id="headingOne">
+							<h4 class="panel-title">
+								<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseCatComp" aria-expanded="true" aria-controls="collapseCatComp">
+								  Categorywise Comparison
+								</a>
+							</h4>
+						</div>
+						<div id="collapseCatComp" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+							<div class="panel-body">
+								<div class="col-xs-12" id="combination-chart"><b>Loading Categorywise Expense...</b></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="panel-group" role="tablist" aria-multiselectable="true" id="average_chart_section">
+					<div class="panel panel-default chart_section">
+						<div class="panel-heading" role="tab" id="headingOne">
+							<h4 class="panel-title">
+								<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseAvgComp" aria-expanded="true" aria-controls="collapseAvgComp">
+								  Average Category Expense
+								</a>
+							</h4>
+						</div>
+						<div id="collapseAvgComp" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+							<div class="panel-body">
+								<div class="col-xs-12" id="average-chart"><b>Average Categorywise Expense...</b></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="panel-group" role="tablist" aria-multiselectable="true" id="SplinewithSymbol-chart-section">
+					<div class="panel panel-default chart_section">
+						<div class="panel-heading" role="tab" id="headingOne">
+							<h4 class="panel-title">
+								<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseAvgComp" aria-expanded="true" aria-controls="collapseAvgComp">
+								  Spline With Symbols
+								</a>
+							</h4>
+						</div>
+						<div id="collapseAvgComp" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+							<div class="panel-body">
+								<div class="col-xs-12" id="spline-chart"><b>Loading spline with symbols chart ...</b></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<footer>
+				<ul class="footer-menu">
+					<li class="col-xs-2 col-sm-2 col-md-2 greybg leftArrow" style="display:none"><a href="javascript:void(0)" class="showChart" data-rel="#average-chart-section"><img src="img/lftarw_icn.png" class="img-responsive" /></a></li>
+					<li class="col-xs-2 col-sm-2 col-md-2 toggleThis"><a href="javascript:void(0)" class="showChart" data-rel="#pie_chart_section"><img src="img/percent_icn.png" class="img-responsive" /></a></li>
+					<li class="col-xs-2 col-sm-2 col-md-2 toggleThis"><a href="javascript:void(0)" class="showChart" data-rel="#bar_chart_section"><img src="img/monthexp_icn.png" class="img-responsive" /></a></li>
+					<li class="col-xs-2 col-sm-2 col-md-2"><a href="javascript:void(0)" class="showChart" data-rel="#transaction-div"><img src="img/weekCompare_icn.png" class="img-responsive" /></a></li>
+					<li class="col-xs-2 col-sm-2 col-md-2"><a href="javascript:void(0)" class="showChart" data-rel="#line-chart-section"><img src="img/catgCompare_icn.png" class="img-responsive" /></a></li>
+					<li class="col-xs-2 col-sm-2 col-md-2"><a href="javascript:void(0)" class="showChart" data-rel="#combination-chart-section"><img src="img/transSummary_icn.png" class="img-responsive" /></a></li>
+					<li class="col-xs-2 col-sm-2 col-md-2 toggleThis" style="display:none"><a href="javascript:void(0)" class="showChart" data-rel="#average_chart_section"><img src="img/avg%20expense.png" class="img-responsive" /></a></li>
+					<li class="col-xs-2 col-sm-2 col-md-2 toggleThis" style="display:none"><a href="javascript:void(0)" class="showChart" data-rel="#SplinewithSymbol-chart-section"><img src="img/monthly%20variation.png" class="img-responsive" /></a></li>
+					<li class="col-xs-2 col-sm-2 col-md-2 greybg rightArrow"><a href="javascript:void(0)" class="showChart" data-rel="#average-chart-section"><img src="img/rgtarw_icn.png" class="img-responsive" /></a></li>
+				</ul>
+			</footer>
+		</div>
+		<script>
+		$(document).ready(function(){
+			$('.chart-container').css("padding-bottom",$('footer').height());
+			$('.showChart').on('click', function(){
+				$('.panel-group').hide();
+				$($(this).attr('data-rel')).show();
+			});
+			$('.leftArrow, .rightArrow').on('click', function(){
+				$('.toggleThis').toggle('fast');
+				$('.leftArrow').toggle('fast');
+				$('.rightArrow').toggle('fast');
+			});
+		});
+		</script>
+    </body>
+</html>

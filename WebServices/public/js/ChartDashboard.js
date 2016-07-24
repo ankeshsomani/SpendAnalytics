@@ -52,7 +52,7 @@ var cif=prmarr[1];
 	
 function DrawPieChart(year,month)
 {			
-	$.getJSON('http://45.55.195.106:8081/listCategorySubcategoryExpense?cif='+cif+'&year='+year+'&month='+month, function(json1) {
+	$.getJSON('http://162.243.167.245:8081/listCategorySubcategoryExpense?cif='+cif+'&year='+year+'&month='+month, function(json1) {
 		var categories=[];
 		//we will push categories in this variable from received JSON
 		
@@ -170,8 +170,8 @@ function DrawPieChart(year,month)
 		//total_expense_val=0;
 			for(var z=0; z< length;z++){
 				var expenses=parseFloat(json1.rows[z].EXPENSES);
-				var subcatname=json1.rows[z].SUB_CATG_NAME;
-				var catname=json1.rows[z].CATG_NAME;
+				var subcatname=json1.rows[z].SUBCATEGORY;
+				var catname=json1.rows[z].CATEGORY;
 				
 				var prevcatname;
 				if(z>0){
@@ -214,7 +214,7 @@ function DrawPieChart(year,month)
 	
 	
 	//function()
-	$.getJSON('http://45.55.195.106:8081/getAllMonthIncomeExpenses?cif='+cif+'&year='+year, function(json1) {   
+	$.getJSON('http://162.243.167.245:8081/getAllMonthExpenses?cif='+cif+'&year='+year, function(json1) {   
 		var categories=[];
 		//we will push categories in this variable from received JSON
 		
@@ -338,7 +338,7 @@ function DrawPieChart(year,month)
 		chart2=new Highcharts.Chart(options1);
 	});
 
-	$.getJSON('http://45.55.195.106:8081/listtransactiondata?cif='+cif+'&year='+year+'&month='+month,function(jsondata) {
+	$.getJSON('http://162.243.167.245:8081/listtransactiondata?cif='+cif+'&year='+year+'&month='+month,function(jsondata) {
 		
 		$('#transactions_table_data').empty();
 		
@@ -422,12 +422,268 @@ function DrawPieChart(year,month)
 					$('#editTransAmount').val(getTransAmt);
 					$('#editTransTags').val(getTransTag);
 					$('#editTransDate').val(getTransDate);
+			    
 				
 			});
 			
 		});	
 	
 	});
+	
+	// average chart 
+	
+	$.getJSON('http://162.243.167.245:8081/AvgSpendCategory?cif='+cif, function(json1) {
+	     var seriesdata1=[];
+		 var drilleddata1=[];
+		 var drilleddowndata1=[];
+
+	
+		var length=json1.rows.length;
+		//length=2;
+		var baseYear=[];
+		var sum=0;
+		//total_expense_val=0;
+			for(var z=0; z< length;z++){
+				var yearno=parseFloat(json1.rows[z].BSNS_YEAR);
+				if(baseYear.indexOf(yearno)<0)
+				{
+				var prevyearno;
+					for(var i=0; i< length;i++){
+						var year_no=parseFloat(json1.rows[i].BSNS_YEAR);
+						var totalexpenses=parseFloat(json1.rows[i].TOTEXPENSES);
+						var catname=json1.rows[i].CATEGORY;
+						var averegexpense=parseFloat(Math.round(json1.rows[i].AVGEXPENSES));
+						
+						
+						if(yearno==year_no)
+						{
+						//alert(prevyearno);
+							if(prevyearno!=year_no){
+							if(prevyearno!=null){
+								seriesdata1.push({"name" :prevyearno,"y": sum,"drilldown":prevyearno});
+								drilleddowndata1.push({"name" :prevyearno,"id":prevyearno,"data":drilleddata1});
+								}
+								
+								drilleddata1=[];
+								drilleddata1.push({'name':catname,'y':averegexpense});
+								sum=totalexpenses;
+								prevyearno=year_no;
+								baseYear.push(yearno);
+							}
+							else{
+								sum=sum+totalexpenses;
+								drilleddata1.push({'name':catname,'y':averegexpense});
+							}
+						}
+						
+					}
+				}
+				if(z==length-1){
+						seriesdata1.push({"name" :yearno,"y": sum,"drilldown":yearno});
+						drilleddowndata1.push({"name" :yearno,"id":yearno,"data":drilleddata1});
+					}
+			}	
+	
+    // Create the chart
+    var options={
+        chart: {
+            type: 'column',
+			renderTo:'average-chart'
+        },
+        title: {
+            text: ''
+        },
+        xAxis: {
+            type: 'category'
+        },
+		 yAxis: {
+            title: {
+                text: 'Total Expense $'
+            }
+
+        },
+        legend: {
+            enabled: false
+        },
+
+        plotOptions: {
+            series: {
+                borderWidth: 0,
+                dataLabels: {
+                    enabled: true,
+                }
+            }
+        },
+    
+       series: [{
+            name: 'Brands',
+            colorByPoint: true,
+            data: seriesdata1
+        }],
+        drilldown: {
+            series: drilleddowndata1
+			}
+    }
+  chart2=new Highcharts.Chart(options);
+
+});
+
+//Spline with symbol chart
+
+$.getJSON('http://162.243.167.245:8081/getAllMonthExpenses?cif='+cif+'&year='+year, function(json1) {   
+		var categories=[];
+		//we will push categories in this variable from received JSON
+		var data2=[];
+		
+		
+		
+			var length=json1.rows.length;
+		var monthlyExpenses=new Object();
+		
+			for(var z=0; z< length;z++){
+							
+				var expenses=parseFloat(json1.rows[z].EXPENSES);
+				var month=parseFloat(json1.rows[z].MONTH_NO);	
+				monthlyExpenses[month]=expenses;
+				switch (month)
+				{
+					case 1:expense_month='Jan';
+					break;
+					case 2:expense_month='Feb';
+					break;
+					case 3:expense_month='Mar';
+					break;
+					case 4:expense_month='Apr';
+					break;
+					case 5:expense_month='May';
+					break;
+					case 6:expense_month='Jun';
+					break;
+					case 7:expense_month='Jul';
+					break;
+					case 8:expense_month='Aug';
+					break;
+					case 9:expense_month='Sep';
+					break;
+					case 10:expense_month='Oct';
+					break;
+					case 11:expense_month='Nov';
+					break;
+					case 12:expense_month='Dec';
+					break;
+				}
+				categories.push(expense_month);
+				data2.push(expenses);
+			}
+			
+			var data4=[];
+			//second year data
+			var year1=(year-1);
+			
+			//alert(year1);
+			$.getJSON('http://162.243.167.245:8081/getAllMonthExpenses?cif='+cif+'&year='+year1, function(json2) {   
+			//we will push categories in this variable from received JSON
+			var length=json2.rows.length;
+			var monthlyExpenses=new Object();
+		
+			for(var z=0; z< length;z++){
+				var expenses=parseFloat(json2.rows[z].EXPENSES);
+				var month=parseFloat(json2.rows[z].MONTH_NO);	
+				monthlyExpenses[month]=expenses;
+				switch (month)
+				{
+					case 1:expense_month='Jan';
+					break;
+					case 2:expense_month='Feb';
+					break;
+					case 3:expense_month='Mar';
+					break;
+					case 4:expense_month='Apr';
+					break;
+					case 5:expense_month='May';
+					break;
+					case 6:expense_month='Jun';
+					break;
+					case 7:expense_month='Jul';
+					break;
+					case 8:expense_month='Aug';
+					break;
+					case 9:expense_month='Sep';
+					break;
+					case 10:expense_month='Oct';
+					break;
+					case 11:expense_month='Nov';
+					break;
+					case 12:expense_month='Dec';
+					break;
+				}
+				if(categories.indexOf(expense_month)<0)
+					categories.push(expense_month);
+				
+				data4.push(expenses);
+			}
+	
+    var options={
+        chart: {
+            type: 'spline',
+			renderTo:'spline-chart'
+        },
+        title: {
+            text: 'Monthly Average Expense $'
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: categories
+        },
+        yAxis: {
+            title: {
+                text: 'Expense'
+            },
+            labels: {
+                formatter: function () {
+                    return this.value + '';
+                }
+            }
+        },
+        tooltip: {
+            crosshairs: true,
+            shared: true
+        },
+        plotOptions: {
+            spline: {
+                marker: {
+                    radius: 4,
+                    lineColor: '#666666',
+                    lineWidth: 1
+                }
+            }
+        },
+        series: [{
+            name: year,
+            marker: {
+                symbol: 'square'
+            },
+            data: data2
+
+        },
+		{
+            name: year1,
+            marker: {
+                symbol: 'diamond'
+            },
+            data: data4
+
+        }
+		]
+    
+	}
+	chart2=new Highcharts.Chart(options);
+});
+});
+
+
 	
 }
 /****/	
@@ -555,7 +811,7 @@ $('#editTransactionModal #submit').click(function(){
 			var chartData = [];
 	var chartCategories=[];
 	var expData = [];
-		$.getJSON('http://45.55.195.106:8081/listExpensesByWeek?cif='+cif+'&year='+year1+'&month='+month1, function(json1){
+		$.getJSON('http://162.243.167.245:8081/listExpensesByWeek?cif='+cif+'&year='+year1+'&month='+month1, function(json1){
 
 			var monthName,weekName;
 			switch(month1){
@@ -637,7 +893,7 @@ $('#editTransactionModal #submit').click(function(){
 				}
 
 				///////////////Second year data get
-		$.getJSON('http://45.55.195.106:8081/listExpensesByWeek?cif='+cif+'&year='+year2+'&month='+month2, function(json1) {				
+		$.getJSON('http://162.243.167.245:8081/listExpensesByWeek?cif='+cif+'&year='+year2+'&month='+month2, function(json1) {				
 					
 			var monthNumber,weekName;
 			var length=json1.rows.length;
@@ -745,7 +1001,7 @@ $('#editTransactionModal #submit').click(function(){
 	var chartCategories1=[];
 	var expData1 = [];
 	
-	$.getJSON('http://45.55.195.106:8081/listExpensesByCategoryMonthly?cif='+cif+'&year='+year1+'&month='+month1, function(json1) {
+	$.getJSON('http://162.243.167.245:8081/listExpensesByCategoryMonthly?cif='+cif+'&year='+year1+'&month='+month1, function(json1) {
 
 		var length=json1.rows.length;
 		//length=2;
@@ -762,7 +1018,7 @@ $('#editTransactionModal #submit').click(function(){
 				}
 				}
 				
-	$.getJSON('http://45.55.195.106:8081/listExpensesByCategoryMonthly?cif='+cif+'&year='+year2+'&month='+month2, function(json1) {
+	$.getJSON('http://162.243.167.245:8081/listExpensesByCategoryMonthly?cif='+cif+'&year='+year2+'&month='+month2, function(json1) {
 	
 		var length=json1.rows.length;
 
@@ -865,7 +1121,7 @@ $('#editTransactionModal #submit').click(function(){
 		if($('#user_details').hasClass('hide'))
 		{
 			$('#user_details').removeClass('hide');
-			$.getJSON('http://45.55.195.106:8081/listCustomerDetails?cif='+cif+'',function(json1){
+			$.getJSON('http://162.243.167.245:8081/listCustomerDetails?cif='+cif+'',function(json1){
 				var cust_name=json1.rows[0].Cust_Name;
 				var cust_contact=json1.rows[0].Cust_Contact;
 				var cust_email=json1.rows[0].Cust_Email;

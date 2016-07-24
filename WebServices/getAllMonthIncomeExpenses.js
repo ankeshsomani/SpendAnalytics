@@ -1,6 +1,6 @@
 module.exports=function(app,client,url){
 var common = require("./commonscripts.js");
-var path=common.getAllMonthExpenses;
+var path=common.getAllMonthIncomeExpenses;
 app.get(path, function (req, res) {
 var cif=req.query['cif'];
 var year=req.query['year'];
@@ -12,7 +12,7 @@ var year=req.query['year'];
 		if ((typeof year !== "undefined") && (year !== null)){
 			
 				 validated=true;
-				 query="select DAY1.MONTH_NO,sum(BCT.PAID_OUT) AS EXPENSES from hdfs.tmp.vw_mongo_transactions BCT JOIN hdfs.tmp.vw_mongo_days DAY1 on BCT.BSNS_DATE=DAY1.BSNS_DATE where BCT.CIF ="+cif+" and DAY1.BSNS_YEAR ="+year+" group by DAY1.MONTH_NO order by DAY1.MONTH_NO ASC";
+				 query="select DAY1.MONTH_NO,sum(BCT.PAID_OUT) AS EXPENSES from dfs.tmp.vw_mongo_transactions BCT JOIN dfs.tmp.vw_mongo_days DAY1 on BCT.BSNS_DATE=DAY1.BSNS_DATE where BCT.CIF ="+cif+" and DAY1.BSNS_YEAR ="+year+" group by DAY1.MONTH_NO order by DAY1.MONTH_NO ASC";
 	 
 	  }
 	  else{

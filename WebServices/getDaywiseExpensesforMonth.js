@@ -15,7 +15,7 @@ var month=req.query['month'];
 	       if ((typeof month!== "undefined") && (month !== null)){
 			
 			validated=true;
-				 query="select substr(day1.DAY_KEY,7,2) AS DAY_NUMBER,sum(bct.PAID_OUT) as Expenses from hdfs.tmp.vw_mongo_transactions bct join hdfs.tmp.vw_mongo_days day1 on day1.bsns_date=bct.bsns_date where day1.BSNS_YEAR="+year+" and bct.CIF="+cif+" and day1.MONTH_NO="+month+" group by day1.DAY_KEY " ;
+				 query="select substr(day1.DAY_KEY,7,2) AS DAY_NUMBER,sum(bct.PAID_OUT) as Expenses from dfs.tmp.vw_mongo_transactions bct join dfs.tmp.vw_mongo_days day1 on day1.bsns_date=bct.bsns_date where day1.BSNS_YEAR="+year+" and bct.CIF="+cif+" and day1.MONTH_NO="+month+" group by day1.DAY_KEY " ;
 			}
 			else{
 				res.send(mandatoryAttributeMessage);

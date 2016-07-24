@@ -13,7 +13,7 @@ var month=req.query['month'];
 		if ((typeof year!== "undefined") && (year !== null)){
 			 if ((typeof month!== "undefined") && (month !== null)){
 				 validated=true;
-				 query="select DAY1.MONTH_NO,sum(BCT.PAID_IN) AS INCOME,sum(BCT.PAID_OUT) AS EXPENSES from hdfs.tmp.vw_mongo_transactions BCT JOIN hdfs.tmp.vw_mongo_category CAT ON CAT.DESCRIPTION=BCT.DESCRIPTION JOIN hdfs.tmp.vw_mongo_days DAY1 on BCT.BSNS_DATE=DAY1.BSNS_DATE where BCT.cif ="+cif+" AND DAY1.BSNS_YEAR="+year+" AND DAY1.MONTH_NO="+month+" group by DAY1.MONTH_NO" ;
+				 query="select DAY1.MONTH_NO,sum(BCT.PAID_IN) AS INCOME,sum(BCT.PAID_OUT) AS EXPENSES from dfs.tmp.vw_mongo_transactions BCT JOIN dfs.tmp.vw_mongo_category CAT ON CAT.DESCRIPTION=BCT.DESCRIPTION JOIN dfs.tmp.vw_mongo_days DAY1 on BCT.BSNS_DATE=DAY1.BSNS_DATE where BCT.cif ="+cif+" AND DAY1.BSNS_YEAR="+year+" AND DAY1.MONTH_NO="+month+" group by DAY1.MONTH_NO" ;
 			}
 			else{
 				res.send(mandatoryAttributeMessage);

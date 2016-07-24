@@ -11,7 +11,7 @@ var cif=req.query['cif'];
 	 if ((typeof cif !== "undefined") && (cif !== null)){
 				
 				 validated=true;
-				 query="select DAY1.BSNS_YEAR,sum(BCT.PAID_IN) AS INCOME,sum(BCT.PAID_OUT) AS EXPENSES from hdfs.tmp.vw_mongo_transactions BCT JOIN hdfs.tmp.vw_mongo_days DAY1 on BCT.BSNS_DATE=DAY1.BSNS_DATE where BCT.CIF ="+cif+" group by DAY1.BSNS_YEAR order by DAY1.BSNS_YEAR ASC";
+				 query="select DAY1.BSNS_YEAR,sum(BCT.PAID_IN) AS INCOME,sum(BCT.PAID_OUT) AS EXPENSES from dfs.tmp.vw_mongo_transactions BCT JOIN dfs.tmp.vw_mongo_days DAY1 on BCT.BSNS_DATE=DAY1.BSNS_DATE where BCT.CIF ="+cif+" group by DAY1.BSNS_YEAR order by DAY1.BSNS_YEAR ASC";
 	 
 	  }
 	  else{

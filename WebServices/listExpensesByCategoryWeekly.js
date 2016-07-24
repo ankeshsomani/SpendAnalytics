@@ -24,7 +24,7 @@ var weeknumber=	req.query['weeknumber'];
 						bsns_week=firstWeekNumber+(weeknumber-1)
 						
 						validated=true;
-						query="select DAY1.BSNS_WEEK  ,CAT.CATEGORY,CAT.SUBCATEGORY,sum(BCT.PAID_OUT) AS EXPENSES from hdfs.tmp.vw_mongo_transactions BCT JOIN hdfs.tmp.vw_mongo_category CAT ON CAT.DESCRIPTION=BCT.DESCRIPTION JOIN hdfs.tmp.vw_mongo_days DAY1 on BCT.BSNS_DATE=DAY1.BSNS_DATE where BCT.cif ="+cif+" AND DAY1.BSNS_YEAR="+year+" AND DAY1.MONTH_NO="+month+" AND DAY1.BSNS_WEEK="+bsns_week+" AND BCT.PAID_OUT > 0 group by DAY1.BSNS_WEEK  ,CAT.CATEGORY,CAT.SUBCATEGORY order by CAT.CATEGORY ASC,CAT.SUBCATEGORY ASC";
+						query="select DAY1.BSNS_WEEK  ,CAT.CATEGORY,CAT.SUBCATEGORY,sum(BCT.PAID_OUT) AS EXPENSES from dfs.tmp.vw_mongo_transactions BCT JOIN dfs.tmp.vw_mongo_category CAT ON CAT.DESCRIPTION=BCT.DESCRIPTION JOIN dfs.tmp.vw_mongo_days DAY1 on BCT.BSNS_DATE=DAY1.BSNS_DATE where BCT.cif ="+cif+" AND DAY1.BSNS_YEAR="+year+" AND DAY1.MONTH_NO="+month+" AND DAY1.BSNS_WEEK="+bsns_week+" AND BCT.PAID_OUT > 0 group by DAY1.BSNS_WEEK  ,CAT.CATEGORY,CAT.SUBCATEGORY order by CAT.CATEGORY ASC,CAT.SUBCATEGORY ASC";
 					 }
 					 
 				  }

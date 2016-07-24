@@ -16,7 +16,7 @@ var catgname=req.query['catgname'];
                  if ((typeof catgname!== "undefined") && (catgname !== null)){ 
 				  validated=true;
 				  console.log("print"+catgname);
-				 query="select DAY1.MONTH_NO ,CAT.SUBCATEGORY,sum(BCT.PAID_OUT) AS EXPENSES FROM hdfs.tmp.vw_mongo_transactions BCT JOIN hdfs.tmp.vw_mongo_category CAT ON CAT.DESCRIPTION=BCT.DESCRIPTION JOIN hdfs.tmp.vw_mongo_dayS DAY1 on BCT.BSNS_DATE=DAY1.BSNS_DATE WHERE BCT.cif ="+cif+" AND DAY1.BSNS_YEAR="+year+" AND CAT.CATEGORY="+catgname+" AND DAY1.MONTH_NO="+month+" AND BCT.PAID_OUT > 0 group by DAY1.MONTH_NO , CAT.SUBCATEGORY order by CAT.SUBCATEGORY ASC";
+				 query="select DAY1.MONTH_NO ,CAT.SUBCATEGORY,sum(BCT.PAID_OUT) AS EXPENSES FROM dfs.tmp.vw_mongo_transactions BCT JOIN dfs.tmp.vw_mongo_category CAT ON CAT.DESCRIPTION=BCT.DESCRIPTION JOIN dfs.tmp.vw_mongo_days DAY1 on BCT.BSNS_DATE=DAY1.BSNS_DATE WHERE BCT.cif ="+cif+" AND DAY1.BSNS_YEAR="+year+" AND CAT.CATEGORY="+catgname+" AND DAY1.MONTH_NO="+month+" AND BCT.PAID_OUT > 0 group by DAY1.MONTH_NO , CAT.SUBCATEGORY order by CAT.SUBCATEGORY ASC";
 			}
 			else{
 				res.send(mandatoryAttributeMessage);

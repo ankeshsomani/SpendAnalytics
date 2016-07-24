@@ -1,0 +1,56 @@
+body{background-color: rgb(245,245,245)}
+.app-title{font-size: 24px; font-weight: bold; color:rgb(72,135,249); }
+ul{padding: 0; margin: 0}
+ul li{list-style: none; border-right: 1px solid #ddd; display: inline-block;}
+.footer-menu li{list-style: none; border-right: 1px solid #ddd; display: inline-block; padding:10px;}
+ul li:last-child{border: 0;}
+header ul li a{display: inline-block; vertical-align: middle}
+header ul li li img{margin-right: 12px}
+@media (max-width: 767px) {
+	header ul li{ }
+	h3{margin: 0}
+	.user-submenu, .expense-submenu, .hamburger-submenu{top:48px}
+}
+@media (min-width: 768px) {
+  	header ul li{ height: 56px}
+	.user-submenu, .expense-submenu, .hamburger-submenu{top:56px}
+}
+@media (min-width: 992px) {
+  	header ul li{ height: 72px}
+	.user-submenu, .expense-submenu, .hamburger-submenu{top:72px}
+}
+@media (min-width: 1200px) {
+  	header ul li{ height: 97px}
+	.user-submenu, .expense-submenu, .hamburger-submenu{top:97px}
+}
+.expense-bar{height: auto;background-color: rgb(67,138,254);padding: 15px;}
+.expense-bar select{width:40%}
+.expense-bar select:first-child{float:left}
+.expense-bar select:last-child{float:right}
+.total_expense span{font-size: 20px; color: #fff;}
+.total_expense #total_expense_val, .total_expense span span{font-weight: bold; color: rgb(254,249,9)}
+.chart-container{padding: 15px;}
+.help-text{color: red; text-align: center}
+.hamburger-menu a, .expense-menu a, .user-menu a{color: #666;border: 0;}
+.hamburger-menu a img, .expense-menu a img, .user-menu a img{}
+.paddLR0{padding-left: 0; padding-right: 0}
+.clear{clear: both}
+footer{position: fixed; bottom: 0; background-color: #fff; border-top: 1px solid #ddd;z-index: 90;}
+.greybg{background-color: rgb(239,239,239)}
+.user-submenu, .hamburger-submenu{width: 260px;}
+.expense-submenu{width: 260px;}
+.user-submenu, .expense-submenu{position: absolute;right: 0;background-color: #fff;border: 1px solid #bebebe;z-index: 100;display: none;box-shadow: 2px 2px 10px #888888;}
+.hamburger-submenu{background-color: rgb(66,66,66);position: fixed;left: 0;border: 1px solid #bebebe;z-index: 100;display: none;box-shadow: 2px 2px 10px #888888;height: 100%}
+.user-submenu li, .user-submenu li a, .expense-submenu li, .expense-submenu li a, .hamburger-submenu li, .hamburger-submenu li a{display: block; height: inherit; text-decoration: none; padding-left: 10px}
+/*.user-submenu li:hover, .expense-submenu li:hover{background-color: beige;}*/
+.user-submenu li:hover a, .expense-submenu li:hover a{color:rgb(72,135,249)}
+.hamburger-submenu li:hover a{color:#fff;}
+.user-profile, .user-profile a{background-color: black; color:white}
+.seperator{height: 1px; width: 100%; border-top: 1px solid #ddd; padding: 0}
+.user-menu:hover .user-submenu, .expense-menu:hover .expense-submenu, .hamburger-menu:hover .hamburger-submenu{display: block}
+.panel-group:not(:first-child){display: none}
+.dropdown-menu li{display: block}
+.user-profile{display: flex !important}
+.user-profile .user_name{font-size: 20px; padding: 0; margin: 0; line-height: 90%;}
+.user-profile .user_mob_no{font-size: 10px; padding: 0; margin: 0;}
+.user-profile .user_mail_id{font-size: 10px; padding: 0; margin: 0;}

@@ -13,6 +13,8 @@
 		<script src="https://code.highcharts.com/highcharts.js"></script>
 		<script src="https://code.highcharts.com/modules/drilldown.js"></script>
 		<script type="text/javascript" src="js/ChartDashboard.js"></script>
+		<script type="text/javascript" src="js/Upload.js"></script>
+		
 	</head>
 	<body>
 		<div class="container-fluid" id="dashboard-container">
@@ -270,6 +272,60 @@
 							<div class="col-xs-12" id="combination-chart"><b>Loading Categorywise Expense...</b></div>
 						</div>
 					</div>
+					<div class="row MLR-0 ML-15 MT-20" id="average_chart_section">
+						<div class="col-xs-12 chart_section">
+							<span class="col-xs-12 MB-20"><h3>Average Category Expense</h3></span>
+							<div class="col-xs-12" id="average-chart"><b>Average Categorywise Expense...</b></div>
+						</div>
+					</div>
+					
+					
+					
+					<div class="row MLR-0 ML-15 MT-20" id="SplinewithSymbol-chart-section">
+						<div class="col-xs-12 chart_section">
+							<span class="col-xs-12 MB-20"><h3>Spline With Symbols</h3></span>
+							<div class="col-xs-12" id="spline-chart"><b>Loading spline with symbols chart ...</b></div>
+						</div>
+					</div>
+					
+                    <div class="row" id="transaction-div">
+						<div class="col-xs-12 col-md-12">
+							<span class="col-xs-6 pull-left MB-5 PL-0">
+								<h3>Upload Section</h3>
+							</span>
+							<span class="col-xs-6">
+								<span class="col-xs-6 PL-0">
+									<input type="file" id="filePicker">					
+									<button type="button" class="btn btn-primary" id="btngo">GO</button>
+								</span>
+							</span>
+						</div>
+						
+						<div class="col-xs-12 col-md-12">
+							<div class=" MT-15">
+								<table class="table" id="transactions_table">
+									<thead>
+										<tr>
+											<th>Date</th>
+											<th class="editable">Description</th>
+											<th>Amount (£)</th>
+											<th>Tags</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody id="transactions_table_data1"></tbody>
+								</table>
+								<button type="button" class="btn btn-primary" id="btnsubmit">Submit</button>
+							</div>
+							
+						</div>
+						</div>
+					
+					</div>
+							
+						</div>
+					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -398,7 +454,7 @@
 		</div>
 		
 		<script>
-
+			
 		</script>
 	</body>
 </html>

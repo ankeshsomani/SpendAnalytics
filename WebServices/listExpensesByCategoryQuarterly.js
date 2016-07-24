@@ -13,7 +13,7 @@ var quarter=req.query['quarter'];
 		if ((typeof year!== "undefined") && (year !== null)){
 			 if ((typeof quarter!== "undefined") && (quarter !== null)){
 				 validated=true;
-				 query="select DAY1.BSNS_QUARTER ,CAT.CATEGORY,CAT.SUBCATEGORY,sum(BCT.PAID_OUT) AS EXPENSES from hdfs.tmp.vw_mongo_transactions BCT JOIN hdfs.tmp.vw_mongo_category CAT ON CAT.DESCRIPTION=BCT.DESCRIPTION JOIN hdfs.tmp.vw_mongo_days DAY1 on BCT.BSNS_DATE=DAY1.BSNS_DATE where BCT.cif ="+cif+" AND DAY1.BSNS_YEAR="+year+" AND DAY1.BSNS_QUARTER="+quarter+" AND BCT.PAID_OUT > 0 group by DAY1.BSNS_QUARTER  ,CAT.CATEGORY,CAT.SUBCATEGORY order by CAT.CATEGORY ASC,CAT.SUBCATEGORY ASC";
+				 query="select DAY1.BSNS_QUARTER ,CAT.CATEGORY,CAT.SUBCATEGORY,sum(BCT.PAID_OUT) AS EXPENSES from dfs.tmp.vw_mongo_transactions BCT JOIN dfs.tmp.vw_mongo_category CAT ON CAT.DESCRIPTION=BCT.DESCRIPTION JOIN dfs.tmp.vw_mongo_days DAY1 on BCT.BSNS_DATE=DAY1.BSNS_DATE where BCT.cif ="+cif+" AND DAY1.BSNS_YEAR="+year+" AND DAY1.BSNS_QUARTER="+quarter+" AND BCT.PAID_OUT > 0 group by DAY1.BSNS_QUARTER  ,CAT.CATEGORY,CAT.SUBCATEGORY order by CAT.CATEGORY ASC,CAT.SUBCATEGORY ASC";
 			}
 			else{
 				res.send(mandatoryAttributeMessage);

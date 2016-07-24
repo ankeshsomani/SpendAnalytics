@@ -12,7 +12,7 @@ var year=req.query['year'];
 		if ((typeof year!== "undefined") && (year !== null)){
 			  
 					 validated=true;
-					 query="select DAY1.BSNS_YEAR,CAT.CATEGORY,CAT.SUBCATEGORY,sum(BCT.PAID_OUT) AS EXPENSES from hdfs.tmp.vw_mongo_transactions BCT JOIN hdfs.tmp.vw_mongo_category CAT ON CAT.DESCRIPTION=BCT.DESCRIPTION JOIN hdfs.tmp.vw_mongo_days DAY1 on BCT.BSNS_DATE=DAY1.BSNS_DATE where BCT.cif ="+cif+" AND DAY1.BSNS_YEAR="+year+" AND BCT.PAID_OUT > 0 group by DAY1.BSNS_YEAR,CAT.CATEGORY,CAT.SUBCATEGORY order by CAT.CATEGORY ASC,CAT.SUBCATEGORY ASC";
+					 query="select DAY1.BSNS_YEAR,CAT.CATEGORY,CAT.SUBCATEGORY,sum(BCT.PAID_OUT) AS EXPENSES from dfs.tmp.vw_mongo_transactions BCT JOIN dfs.tmp.vw_mongo_category CAT ON CAT.DESCRIPTION=BCT.DESCRIPTION JOIN dfs.tmp.vw_mongo_days DAY1 on BCT.BSNS_DATE=DAY1.BSNS_DATE where BCT.cif ="+cif+" AND DAY1.BSNS_YEAR="+year+" AND BCT.PAID_OUT > 0 group by DAY1.BSNS_YEAR,CAT.CATEGORY,CAT.SUBCATEGORY order by CAT.CATEGORY ASC,CAT.SUBCATEGORY ASC";
 
 		 }
 		 else{
