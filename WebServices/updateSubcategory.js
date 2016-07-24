@@ -9,89 +9,35 @@ module.exports = function(app, client, url) {
     app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
         extended: true
     }));
-    var successCount = 0;
-    var failedCount = 0;
-
-    var path = common.addTransactions;
+    var path = common.updateSubcategory;
     var closeDB = function(db) {
         db.close();
     };	
 
-    function checkSuccess(db, docId, length, response) {
-
-        if (docId == length) {
-            closeDB(db);
-            if (successCount == length) {
-                response.json('{"success":"inserted ' + successCount + ' records."}');
-
-            } else {
-                response.json('{"failure":"failed ' + failedCount + ' records."}');
-
-            }
-
-        }
-    }
-
-    var updateDoc = function(db, insertedDoc, docId, length, sequenceId, response) {
-        db.collection('transactions').updateOne({
-            "_id": insertedDoc
+    var updateSubcategory = function(db, transaction, response) {
+        db.collection('category').updateOne({
+            "DESCRIPTION": transaction.DESCRIPTION
         }, {
             $set: {
-                "TRANSACTION_ID": sequenceId
+                 "SUBCATEGORY": transaction.SUBCATEGORY			
             },
             $currentDate: {
                 "lastModified": true
             }
-        }, function(err, results) {
+        }, function(err, result) {
 
             if (!err) {
-                successCount++;
-                checkSuccess(db, docId, length, response);
+                console.log(result);
+               closeDB(db);
+			   response.json('{"success":"Updated record."}');
             } else {
-                failedCount++;
-                checkSuccess(docId, length, response);
-                response.json('{"failure":"error while updating sequence"}');
+                
+                closeDB(db);
+                response.json('{"failure":"error while updating SUBCATEGORY"}');
             }
         });
     }
-    var insertTransaction = function(db, transactionData, response) {
-
-        db.collection('transactions').insert(transactionData, response, function(err, result) {
-            if (!err) {
-                var insertedDocs = result.insertedIds;
-                for (var w = 0; w < insertedDocs.length; w++) {
-                    incrementSequence(db, insertedDocs[w], w, insertedDocs.length, response);
-                }
-
-            } else {
-                closeDB(db);
-                response.json('{"failure":"error while insertion"}');
-            }
-
-        });
-    };
-    var incrementSequence = function(db, insertedDoc, docId, length, response) {
-
-        db.collection('transactioncounter').findAndModify({
-            "_id": "transactionid"
-        }, {}, {
-            "$inc": {
-                "seq": 1
-            }
-        }, {
-            "new": true,
-            "upsert": true
-        }, function(err, results) {
-            if (!err) {
-
-                updateDoc(db, insertedDoc, docId, length, results.value.seq, response);
-            } else {
-                response.json('{"failure":"error while incrementSequence in mongodb"}');
-                closeDB(db);
-            }
-        });
-
-    }
+    
 
     app.use(function(req, res, next) {
 
@@ -112,13 +58,13 @@ module.exports = function(app, client, url) {
         next();
     });
     app.post(path, function(req, res, next) {
-        var transactions = req.body.transactions;
+        var transaction = req.body;
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         var query = "";
         var validated = false;
-        var mandatoryAttributeMessage = "Please send transaction/s to be inserted";
-        if ((typeof transactions !== "undefined") && (transactions !== null)) {
+        var mandatoryAttributeMessage = "Please send subcategories to be updated";
+        if ((typeof transaction !== "undefined") && (transaction !== null)) {
             validated = true;
         } else {
             res.send(mandatoryAttributeMessage);
@@ -126,18 +72,17 @@ module.exports = function(app, client, url) {
 
         if (validated) {
 
-
-
             MongoClient.connect(mongourl, function(err, db) {
                 assert.equal(null, err);
                 if (!err) {
-                    insertTransaction(db, transactions, res);
+                    updateSubcategory(db, transaction, res);
 
                 } else {
                     response.json('{"failure":"error while connecting to mongodb"}');
                 }
 
             });
+
 
         }
 

@@ -14,7 +14,7 @@ res.setHeader('Access-Control-Allow-Origin', '*');
 					if ((typeof month!== "undefined") && (month !== null)){
   
 					 validated=true;
-					 query="select TO_CHAR((CAST(BCT.BSNS_DATE AS DATE)), 'dd-MMM-YYYY') as BSNS_DATE ,BCT.DESCRIPTION ,BCT.PAID_OUT AS EXPENSES,CAT.SUBCATEGORY AS TAGS from dfs.tmp.vw_mongo_transactions BCT JOIN dfs.tmp.vw_mongo_category CAT ON CAT.DESCRIPTION=BCT.DESCRIPTION JOIN dfs.tmp.vw_mongo_days DAY1 on BCT.BSNS_DATE=DAY1.BSNS_DATE where BCT.cif ="+cif+" AND DAY1.MONTH_NO="+month+" AND DAY1.BSNS_YEAR="+year+" AND BCT.PAID_OUT>0 ";
+					 query="select TO_CHAR((CAST(BCT.BSNS_DATE AS DATE)), 'dd-MMM-YYYY') as BSNS_DATE ,BCT.DESCRIPTION ,BCT.PAID_OUT AS EXPENSES,CAT.SUBCATEGORY AS TAGS,BCT.TRANSACTION_ID AS TRANSACTION_ID from dfs.tmp.vw_mongo_transactions BCT JOIN dfs.tmp.vw_mongo_category CAT ON CAT.DESCRIPTION=BCT.DESCRIPTION JOIN dfs.tmp.vw_mongo_days DAY1 on BCT.BSNS_DATE=DAY1.BSNS_DATE where BCT.cif ="+cif+" AND DAY1.MONTH_NO="+month+" AND DAY1.BSNS_YEAR="+year+" AND BCT.PAID_OUT>0 ";
 
 		 }
 		 else{

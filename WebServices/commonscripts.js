@@ -30,5 +30,6 @@ exports.listCategorySubcategoryExpense='/listCategorySubcategoryExpense';
 exports.AvgSpendCategory='/AvgSpendCategory';
 exports.addTransactions='/addTransactions';
 exports.updateTransaction='/updateTransaction';
+exports.updateSubcategory='/updateSubcategory';
 exports.mongoUrl='mongodb://localhost:27017/spendanalytics';
 
