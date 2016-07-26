@@ -1,0 +1,522 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Spend Analytics</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+		    <link href="css/custom_Styles.css" rel="stylesheet">
+		<!-- Optional theme -->
+     
+        <link rel="stylesheet" href="css/style.css">
+         <link rel="stylesheet" href="css/font-awesome.css">
+        <script src="js/jquery-2.1.0.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
+		<script src="js/bootstrap-select.min.js"></script>
+        <script src="js/highcharts.js"></script>
+		<script src="js/drilldown.js"></script>
+		<script type="text/javascript" src="js/ChartDashboard.js"></script>
+		<script >
+			$(document).ready(function(){
+			  $(".spyear2").hide(); 
+			  $(".spmonth2").hide(); 
+			    $(".spyear1").hide(); 
+			  $(".spmonth1").hide(); 
+			 $('.wkcom').click(function(){
+				  $(".spyear").hide(); 
+			  $(".spmonth").hide(); 
+			    $(".spyear2").show(); 
+			  $(".spmonth2").show(); 
+			    $(".spyear1").show(); 
+			  $(".spmonth1").show(); 
+			   $(".expense").hide();
+			   $("select").css("margin-top","1em");
+			 });
+			 
+			  $('.shd').click(function(){
+				  $(".spyear2").hide(); 
+			  $(".spmonth2").hide(); 
+			    $(".spyear").show(); 
+			  $(".spmonth").show(); 
+			    $(".spyear1").hide(); 
+			  $(".spmonth1").hide(); 
+			   $(".expense").show();
+			   $("select").css("margin-top","-1em");
+			 });
+		 });
+		</script>
+    </head>
+    <body>  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container-fluid paddLR0">
+			<header>
+				<div class="container-fluid" id="dashboard-container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle user-profile" data-toggle="modal" data-target="#myMenu">
+                   <img class="img-responsive" src="img/nav_icn.png" alt="bar" width="17px">
+                </button>
+                <a class="navbar-brand" href="#">Spend Analytics </a> 
+                <a class="right" href="#" data-toggle="modal" data-target="#myModal"><img class="img-responsive" src="img/userProfile_icn.png" alt="bar" width="25px"/></a>
+                <a class="right1" href="#" data-toggle="modal" data-target="#mybudget"><img class="img-responsive" src="img/expense_icn.png" alt="bar" width="25px"/></a>
+            </div>
+              <!-- Modal Menubar content--> 
+			<div class="modal fade" id="myMenu" role="dialog">
+                    <div class="modal-dialog">                 
+                      <!-- Modal content--> 
+                        <div class="modal-content menudialog">
+                            <div class="modal-header">
+                                <table class="prof"><tbody><tr><td>       
+                                   <img src="img/john_doe.jpg" class="img-circle " alt="Cinque Terre" width="60" height="60">
+                                </td><td>                            
+                                <h5 class="modal-title"><span class="user_name"></span></h5>
+                                     <p><span class="user_mail_id"></span> <span class="user_mob_no"></span></p>
+                                 </td></tr></tbody></table>
+                             </div>
+                             <div class="modal-body sidemenubar">
+							 
+                                 <ul class="nav navbar-navz">
+                                 
+                                    <li><a href="#profile"  data-dismiss="modal"><table class="iconmenu"><tbody><tr><td><img class="img-responsive" src="img/dashboard_icn.png" alt="bar" width="20px"/></td><td> Dashboard</td></tr></tbody></table></a></li>
+                                    <li><a href="#referfriends"  data-dismiss="modal"><table class="iconmenu"><tbody><tr><td><img class="img-responsive" src="img/report_icn.png" alt="bar" width="20px"/></td><td> Reports</td></tr></tbody></table></a></li>
+                                    <li><a href="#Notification"  data-dismiss="modal"><table class="iconmenu"><tbody><tr><td><img class="img-responsive" src="img/budget_icn.png" alt="bar" width="20px"/></td><td> Budgets</td></tr></tbody></table></a></li>
+                                    <li><a href="#Settings"  data-dismiss="modal"><table class="iconmenu"><tbody><tr><td><img class="img-responsive" src="img/forecast_icn.png" alt="bar" width="20px"/></td><td> Forecast</td></tr></tbody></table></a></li>
+                                    <li><a href="#profile"  data-dismiss="modal"><table class="iconmenu"><tbody><tr><td><img class="img-responsive" src="img/accounts_icn.png" alt="bar" width="20px"/></td><td> Accounts</td></tr></tbody></table></a></li>
+                                    <li><a href="#referfriends"  data-dismiss="modal"><table class="iconmenu"><tbody><tr><td><img class="img-responsive" src="img/reminder_icn.png" alt="bar" width="20px"/></td><td> Reminders</td></tr></tbody></table></a></li>
+                                    <li><a href="#Notification"  data-dismiss="modal"><table class="iconmenu"><tbody><tr><td><img class="img-responsive" src="img/tags_icn.png" alt="bar" width="20px"/></td><td> Tags</td></tr></tbody></table></a></li>
+                                   
+                                  </ul>
+                             </div>
+                            
+                        </div>                    
+                    </div>
+              </div> 
+               <!-- Modal Budget content--> 
+              <div class="modal fade" id="mybudget" role="dialog">
+                    <div class="modal-dialog">                 
+                      <!-- Modal content--> 
+                        <div class="modal-content budgetdialog">
+                            <div class="modal-header">
+                                <table class="prof"><tbody><tr><td>       
+                                   <img src="img/coins_icn.png" class="img-responsive" alt="Cinque Terre" width="30" width="30" >
+                                </td><td>                            
+                                <h5 class="modal-title">Change Currency</h5>                                    
+                                 </td></tr></tbody></table>
+                             </div>
+                             <div class="modal-body">
+                                 <ul class="nav navbar-navb">
+                              	<li><a href="javascript:void(0)"  data-dismiss="modal" href="javascript:void(0)" class="showChart" data-rel="#pie_chart_section"><table class="iconmenu"><tbody><tr><td><img src="img/percent_icn.png" width="16px" /></td><td>Expense Percentage</td></tr></tbody></table></a></li>
+								<li><a href="javascript:void(0)"  data-dismiss="modal" class="showChart" data-rel="#bar_chart_section"><table class="iconmenu"><tbody><tr><td><img src="img/monthexp_icn.png" width="16px" /></td><td>Monthly Expense</td></tr></tbody></table></a></li>
+								<li><a href="javascript:void(0)"  data-dismiss="modal" class="showChart" data-rel="#line-chart-section"><table class="iconmenu"><tbody><tr><td><img src="img/weekCompare_icn.png" width="16px" /></td><td>Weekly Comparison</td></tr></tbody></table></a></li>
+								<li><a href="javascript:void(0)"   data-dismiss="modal" class="showChart" data-rel="#combination-chart-section"><table class="iconmenu"><tbody><tr><td><img src="img/catgCompare_icn.png" width="16px" /></td><td>Categorywise Comparison</td></tr></tbody></table></a></li>
+								<li><a href="javascript:void(0)"  data-dismiss="modal" class="showChart" data-rel="#transaction-div"><table class="iconmenu"><tbody><tr><td><img src="img/transSummary_icn.png" width="16px" /></td><td>Transaction Summary</td></tr></tbody></table></a></li>
+								<li><a href="javascript:void(0)"  data-dismiss="modal"  class="showChart" data-rel="#average_chart_section"><table class="iconmenu"><tbody><tr><td><img src="img/avg%20expense.png" width="16px" /></td><td> Total Yearly Expense</td></tr></tbody></table></a></li>
+								<li><a href="javascript:void(0)"  data-dismiss="modal" class="showChart" data-rel="#SplinewithSymbol-chart-section"><table class="iconmenu"><tbody><tr><td><img src="img/monthly%20variation.png" width="16px" /></td><td> Monthly Comparison </td></tr></tbody></table></a></li>
+                                  </ul>
+                             </div>
+                            
+                        </div>                    
+                    </div>
+              </div> 
+               <!-- Modal Profile content--> 
+                <div class="modal fade" id="myModal" role="dialog" >
+                                            <div class="modal-dialog" id="user_details">
+                                            
+                                              <!-- Modal content-->
+                                              <div class="modal-content profilecont">
+                                                <div class="modal-header user-personal-details">
+                                                    <table class="prof"><tbody><tr><td>       
+                                                         <img src="img/john_doe.jpg" class="img-circle" alt="Cinque Terre" width="60" height="60">
+                                                    </td><td>
+                                                         
+                                                       <h5 class="modal-title"><span class="user_name"></span></h5>
+                                                       <p><span class="user_mail_id"></span> <span class="user_mob_no"></span></p>
+                                                       <p></p>
+                                                    </td></tr></tbody></table>
+                                                </div>
+                                                <div class="modal-body">
+                                                   <ul class="nav navbar-navb">
+                 
+                                                                <li><a href="#profile"  data-dismiss="modal"><table class="iconmenu"><tbody><tr><td><img class="img-responsive" src="img/Profile_icn.png" alt="bar" width="20px"/></td><td> Profile</td></tr></tbody></table></a></li>
+                                                                <li><a href="#referfriends"  data-dismiss="modal"><table class="iconmenu"><tbody><tr><td><img class="img-responsive" src="img/refer_icn.png" alt="bar" width="20px"/></td><td> Refer Friends</td></tr></tbody></table></a></li>
+                                                                <li><a href="#Notification"  data-dismiss="modal"><table class="iconmenu"><tbody><tr><td><img class="img-responsive" src="img/notification_icn.png" alt="bar" width="20px"/></td><td> Notifications</td></tr></tbody></table></a></li>
+                                                                <li><a href="#Settings"  data-dismiss="modal"><table class="iconmenu"><tbody><tr><td><img class="img-responsive" src="img/setting_icn.png" alt="bar" width="20px"/></td><td> Settings</td></tr></tbody></table></a></li>
+                                                    </ul>
+                                                  
+                                                  
+                                                </div>
+                                                <div class="modal-footer">
+                                                 <ul class="nav navbar-navb">
+                                                         <li><a href="#logout"><table class="iconmenu"><tbody><tr><td><img class="img-responsive" src="img/logouot_icn.png" alt="bar" width="20px"/></td><td> <a href="login.html">Logout</a></td></tr></tbody></table></a></li>  
+                                                 </ul>
+                                                </div>
+                                              </div>
+                                              
+                                            </div>
+              </div>
+              
+              <div class="row heads selectionbar">
+            <div class="col-lg-12 col-sm-12 col-md-12">
+                <div class="headbar total_expense">
+                    <table class=" "><tbody><tr><td> 
+                     <select class="spmonth" id="month_for_catwaise_expense"" size="1" >
+								<option>Jan</option>
+								<option>Feb</option>
+								<option>Mar</option>
+								<option>Apr</option>
+								<option>May</option>
+								<option selected>Jun</option>
+								<option>Jul</option>
+								<option>Aug</option>
+								<option>Sep</option>
+								<option>Oct</option>
+								<option>Nov</option>
+								<option>Dec</option>
+                    </select> </td><td>
+                    <select id="year_for_catwaise_expense" class="selyear spyear" >  
+					<option>2014</option>
+					<option>2015</option>
+					<option selected>2016</option>
+					</select>
+
+                        </td><td>
+						
+                     <select class=" spmonth1 comparison_selector" id="first_month_selection" size="1" >
+							<option value="1">Jan</option>
+										<option value="2">Feb</option>
+										<option value="3">Mar</option>
+										<option value="4">Apr</option>
+										<option value="5">May</option>
+										<option  value="6" selected>Jun</option>
+										<option value="7">Jul</option>
+										<option value="8">Aug</option>
+										<option value="9">Sep</option>
+										<option value="10">Oct</option>
+										<option value="11">Nov</option>
+										<option value="12">Dec</option>
+                    </select> </td><td>
+                    <select id="first_year_selection" class="selyear spyear1 comparison_selector" >  
+					<option>2014</option>
+					<option >2015</option>
+					<option selected>2016</option>
+					</select>
+
+                        </td>
+						<td>
+						
+                     <select class=" spmonth2 comparison_selector" id="second_month_selection " size="1" >
+								<option value="1">Jan</option>
+										<option value="2">Feb</option>
+										<option value="3">Mar</option>
+										<option value="4">Apr</option>
+										<option value="5">May</option>
+										<option  value="6" selected>Jun</option>
+										<option value="7">Jul</option>
+										<option value="8">Aug</option>
+										<option value="9">Sep</option>
+										<option value="10">Oct</option>
+										<option value="11">Nov</option>
+										<option value="12">Dec</option>
+                    </select> </td><td>
+                    <select id="second_year_selection" class="selyear spyear2 comparison_selector" >  
+					<option>2014</option>
+					<option selected>2015</option>
+					<option >2016</option>
+					</select>
+
+                        </td>
+						
+						
+						
+						<td>
+                         <div class="expense">
+                           <p class="title">Total Expense</p>
+                           <p class="pounddata">&#163; <span id="total_expense_val"></span></p>
+                    </div> </td><td></tr></tbody></table>
+                </div>
+           
+            </div>
+        </div>
+            <!-- /.navbar-collapse -->
+        </div></nav>
+			</header>
+			<div class="clear"></div>
+			
+			<section class="chart-container">
+				<div class="panel-group" role="tablist" aria-multiselectable="true" id="pie_chart_section">
+					<div class="panel panel-default chart_section">
+						<div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#pie-chart" aria-expanded="true" aria-controls="pie-chart">
+							<h4 class="panel-title">
+								<a role="button" >
+								  Expense Percentage 
+								</a>
+                                <span><img src="img/dwnarw_icn.png" class="iconarrow" alt="Cinque Terre" width="15" height="15"></span>
+							</h4>
+						</div>
+						<div id="pie-chart" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+							<div class="panel-body">
+								<div class="help-text">* Click Category on pie chart to view its sub-category partition.</div>
+								<div class="" id="pie-chart"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="panel-group" role="tablist" aria-multiselectable="true" id="bar_chart_section">
+					<div class="panel panel-default chart_section">
+						<div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseMonExp" aria-expanded="true" aria-controls="collapseMonExp">
+							<h4 class="panel-title">
+								<a role="button" >
+								  Monthly Expense
+								</a>
+                                 <span><img src="img/dwnarw_icn.png" class="iconarrow" alt="Cinque Terre" width="15" height="15"></span>
+							</h4>
+						</div>
+						<div id="collapseMonExp" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+							<div class="panel-body">
+								<div class="" id="column-chart"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel-group" role="tablist" aria-multiselectable="true" id="transaction-div">
+					<div class="panel panel-default chart_section">
+						<div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseTransSumm" aria-expanded="true" aria-controls="collapseTransSumm">
+							<h4 class="panel-title">
+								<a role="button" >
+								  Transaction Summary
+								</a>
+                                 <span><img src="img/dwnarw_icn.png" class="iconarrow" alt="Cinque Terre" width="15" height="15"></span>
+							</h4>
+						</div>
+						<div id="collapseTransSumm" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+							<div class="panel-body">
+								<div class="col-xs-12 col-md-12 datapadding">
+                                    <div class=" MT-15">
+                                 <table class="table table-striped  table-hover table-condensed" id="transactions_table">
+                                            <thead>
+                                                <tr>
+                                                    <th><button type="button" class="btn btn-primary pull-left addTransactBtn" data-toggle="modal" data-target="#addTransaction">Add Transaction</button></th>
+                                                    <th>
+                                                        <div class="input-group searchBtn">
+                                                           <div class="input-group margin-bottom-sm searchBtn">
+                                                          <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
+                                                          <input type="text" class="form-control" id="search" placeholder="Search">
+                                                        </div>
+                                                        </div>
+                                                        
+                                                    </th>
+                                                   
+                                                </tr>
+                                            </thead>
+                                        </table>								
+								</div></div>
+                                	<div class="col-xs-12 MT-20 actionBtn hide">
+                                    <button type="button" class="btn btn-primary editTransaction">Edit</button>
+                                    <button type="button" class="btn btn-primary deleteTransaction">Delete</button>
+                                </div>
+                                
+                                <div class="col-xs-12 col-md-12">
+                                    <div class=" MT-15">
+                                        <table class="table table-striped table-bordered table-hover table-condensed" id="transactions_table">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Date</th>
+                                                    <th>Description</th>
+                                                    <th>Amount (&pound;)</th>
+                                                    <th>Tags</th>
+                                                  
+                                                </tr>
+                                            </thead>
+                                            <tbody id="transactions_table_data"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                    
+                            
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal fade" id="addTransaction" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myModalLabel">Add Cash Transaction</h4>
+					</div>
+					<div class="modal-body PT-0">
+						<div class="col-md-12">
+							<form role="form">
+								<div class="form-group"> 
+									<span class="col-xs-12 col-md-3 PL-0"><label>Type</label></span>
+									<span class="col-xs-12 col-md-9 PL-0">
+										<span class="col-xs-6">
+											<label class="radio-inline font-12"><input type="radio" name="optradio">Income</label>
+										</span>
+										<span class="col-xs-6">
+											<label class="radio-inline font-12"><input type="radio" name="optradio">Expense</label>
+										</span>
+										<span class="col-xs-6">
+											<label class="radio-inline font-12"><input type="radio" name="optradio">Transfer</label>
+										</span>	
+										<span class="col-xs-6">	
+											<label class="radio-inline font-12"><input type="radio" name="optradio">Refund</label>
+										</span>	
+										<span class="col-xs-6">	
+											<label class="radio-inline font-12"><input type="radio" name="optradio">Standing Order</label>
+										</span>
+										<span class="col-xs-6">
+											<label class="radio-inline font-12"><input type="radio" name="optradio">Direct Debit</label>
+										</span>	
+										<span class="col-xs-6">	
+											<label class="radio-inline font-12"><input type="radio" name="optradio">Cheque Payment</label>
+										</span>	
+										<span class="col-xs-6">	
+											<label class="radio-inline font-12"><input type="radio" name="optradio">Internet Banking</label>
+										</span>
+									</span>
+								</div>
+								<div class="form-group"> 
+									<label for="date MT-15">
+										Date (dd-mm-yyyy)
+									</label>
+									<input type="text" class="form-control" id="date" />
+								</div>
+								<div class="form-group"> 
+									<label for="description">Description</label>
+									<input type="text" class="form-control" id="description" />
+								</div>
+								<div class="form-group"> 
+									<label for="amount">
+										Amount (&pound;)
+									</label>
+									<input type="text" class="form-control" id="amount" />
+								</div>
+								<div class="form-group"> 
+									<label for="tags">
+										Tags
+									</label>
+									<input type="text" class="form-control" id="tags" />
+								</div>
+								<div class="form-group"> 
+									<label for="account">
+										Account
+									</label>
+									<select class="form-control">
+										<option>Credit Card</option>
+										<option>Debit Card</option>
+										<option>Travel Card</option>
+									</select>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+						<button type="button" id="addNewTransaction" class="btn btn-primary">Add</button>
+					</div>
+				</div>
+			</div>
+		</div>
+				<div class="panel-group" role="tablist" aria-multiselectable="true" id="line-chart-section">
+					<div class="panel panel-default chart_section">
+						<div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseWeeklyComp" aria-expanded="true" aria-controls="collapseWeeklyComp">
+							<h4 class="panel-title">
+								<a role="button" >
+								  Weekly Comparison
+								</a>
+                                 <span><img src="img/dwnarw_icn.png" class="iconarrow" alt="Cinque Terre" width="15" height="15"></span>
+							</h4>
+						</div>
+						<div id="collapseWeeklyComp" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+							<div class="panel-body">
+								
+								<div class="col-xs-12" id="line-chart2"><b>Loading Expense Comparison...</b></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="panel-group" role="tablist" aria-multiselectable="true" id="combination-chart-section">
+					<div class="panel panel-default chart_section">
+						<div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseCatComp" aria-expanded="true" aria-controls="collapseCatComp">
+							<h4 class="panel-title">
+								<a role="button" >
+								  Categorywise Comparison
+								</a>
+                                 <span><img src="img/dwnarw_icn.png" class="iconarrow" alt="Cinque Terre" width="15" height="15"></span>
+							</h4>
+						</div>
+						<div id="collapseCatComp" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+							<div class="panel-body">
+								<div class="col-xs-12" id="combination-chart"><b>Loading Categorywise Expense...</b></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="panel-group" role="tablist" aria-multiselectable="true" id="average_chart_section">
+					<div class="panel panel-default chart_section">
+						<div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseAvgComp" aria-expanded="true" aria-controls="collapseAvgComp">
+							<h4 class="panel-title">
+								<a role="button" >
+								  Total Yearly Expense
+								</a>
+                                 <span><img src="img/dwnarw_icn.png" class="iconarrow" alt="Cinque Terre" width="15" height="15"></span>
+							</h4>
+						</div>
+						<div id="collapseAvgComp" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+							<div class="panel-body">
+								<div class="col-xs-12" id="average-chart"><b>Total Yearly Expense...</b></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="panel-group" role="tablist" aria-multiselectable="true" id="SplinewithSymbol-chart-section">
+					<div class="panel panel-default chart_section">
+						<div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapsesplchart" aria-expanded="true" aria-controls="collapseAvgComp">
+							<h4 class="panel-title">
+								<a role="button" >
+								  Monthly Comparison 
+								</a>
+                                <span><img src="img/dwnarw_icn.png" class="iconarrow" alt="Cinque Terre" width="15" height="15"></span>
+							</h4>
+						</div>
+						<div id="collapsesplchart" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+							<div class="panel-body">
+								<div class="col-xs-12" id="spline-chart"><b>Loading  Monthly Comparison  chart ...</b></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<footer>
+				<ul class="footer-menu">
+					<li class="col-xs-2 col-sm-2 col-md-2 greybg leftArrow" style="display:none"><a href="javascript:void(0)" class="showChart" data-rel="#average-chart-section"><img src="img/lftarw_icn.png" class="img-responsive" /></a></li>
+					<li class="col-xs-2 col-sm-2 col-md-2 toggleThis"><a href="javascript:void(0)" class="showChart shd" data-rel="#pie_chart_section"><img src="img/percent_icn.png" class="img-responsive" /></a></li>
+					<li class="col-xs-2 col-sm-2 col-md-2 toggleThis"><a href="javascript:void(0)" class="showChart shd" data-rel="#bar_chart_section"><img src="img/monthexp_icn.png" class="img-responsive" /></a></li>
+					<li class="col-xs-2 col-sm-2 col-md-2"><a href="javascript:void(0)" class="showChart wkcom" data-rel="#line-chart-section "><img src="img/weekCompare_icn.png" class="img-responsive" /></a></li>
+					<li class="col-xs-2 col-sm-2 col-md-2"><a href="javascript:void(0)" class="showChart wkcom" data-rel=" #combination-chart-section"><img src="img/catgCompare_icn.png" class="img-responsive" /></a></li>
+					<li class="col-xs-2 col-sm-2 col-md-2"><a href="javascript:void(0)" class="showChart shd" data-rel="#transaction-div"><img src="img/transSummary_icn.png" class="img-responsive" /></a></li>
+					<li class="col-xs-2 col-sm-2 col-md-2 toggleThis" style="display:none"><a href="javascript:void(0)" class="showChart shd" data-rel="#average_chart_section"><img src="img/avg%20expense.png" class="img-responsive" /></a></li>
+					<li class="col-xs-2 col-sm-2 col-md-2 toggleThis" style="display:none"><a href="javascript:void(0)" class="showChart wkcom" data-rel="#SplinewithSymbol-chart-section"><img src="img/monthly%20variation.png" class="img-responsive" /></a></li>
+					<li class="col-xs-2 col-sm-2 col-md-2 greybg rightArrow"><a href="javascript:void(0)" class="showChart" data-rel="#average-chart-section"><img src="img/rgtarw_icn.png" class="img-responsive" /></a></li>
+				</ul>
+			</footer>
+		</div>
+		<script>
+		$(document).ready(function(){
+			$('.chart-container').css("padding-bottom",$('footer').height());
+			$('.showChart').on('click', function(){
+				$('.panel-group').hide();
+				$($(this).attr('data-rel')).show();
+			});
+			$('.leftArrow, .rightArrow').on('click', function(){
+				$('.toggleThis').toggle('fast');
+				$('.leftArrow').toggle('fast');
+				$('.rightArrow').toggle('fast');
+			});
+		});
+		</script>
+    </body>
+</html>

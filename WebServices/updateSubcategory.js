@@ -33,7 +33,7 @@ module.exports = function(app, client, url) {
             } else {
                 
                 closeDB(db);
-                response.json('{"failure":"error while updating SUBCATEGORY"}');
+                response.status(500).send('{"failure":"error while updating SUBCATEGORY"}');
             }
         });
     }
@@ -78,7 +78,7 @@ module.exports = function(app, client, url) {
                     updateSubcategory(db, transaction, res);
 
                 } else {
-                    response.json('{"failure":"error while connecting to mongodb"}');
+                    response.status(500).send('{"failure":"error while connecting to mongodb"}');
                 }
 
             });

@@ -19,13 +19,13 @@ module.exports = function(app, client, url) {
 
     function checkSuccess(db, docId, length, response) {
 
-        if (docId == length) {
+        if (docId == length-1) {
             closeDB(db);
             if (successCount == length) {
                 response.json('{"success":"inserted ' + successCount + ' records."}');
 
             } else {
-                response.json('{"failure":"failed ' + failedCount + ' records."}');
+                response.status(500).send('{"failure":"failed ' + failedCount + ' records."}');
 
             }
 
@@ -50,7 +50,7 @@ module.exports = function(app, client, url) {
             } else {
                 failedCount++;
                 checkSuccess(docId, length, response);
-                response.json('{"failure":"error while updating sequence"}');
+                response.status(500).send('{"failure":"error while updating sequence"}');
             }
         });
     }
@@ -65,7 +65,7 @@ module.exports = function(app, client, url) {
 
             } else {
                 closeDB(db);
-                response.json('{"failure":"error while insertion"}');
+                response.status(500).send('{"failure":"error while insertion"}');
             }
 
         });
@@ -86,7 +86,7 @@ module.exports = function(app, client, url) {
 
                 updateDoc(db, insertedDoc, docId, length, results.value.seq, response);
             } else {
-                response.json('{"failure":"error while incrementSequence in mongodb"}');
+                response.status(500).send('{"failure":"error while incrementSequence in mongodb"}');
                 closeDB(db);
             }
         });
@@ -113,10 +113,14 @@ module.exports = function(app, client, url) {
     });
     app.post(path, function(req, res, next) {
         var transactions = req.body.transactions;
+console.log(req.body);
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         var query = "";
         var validated = false;
+ 	successCount = 0;
+    	failedCount = 0;
+
         var mandatoryAttributeMessage = "Please send transaction/s to be inserted";
         if ((typeof transactions !== "undefined") && (transactions !== null)) {
             validated = true;
@@ -134,7 +138,7 @@ module.exports = function(app, client, url) {
                     insertTransaction(db, transactions, res);
 
                 } else {
-                    response.json('{"failure":"error while connecting to mongodb"}');
+                    res.status(500).send('{"failure":"error while connecting to mongodb"}');
                 }
 
             });

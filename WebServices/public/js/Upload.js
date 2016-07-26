@@ -88,27 +88,19 @@ $(document).ready(function(){
 		};
 		
 		
-		//var data=base46URL;
 		
 		 var dataToBePassed={"encodedImage": base46URL,"fileType":"jpg"};
          
-		  // $.post("http://162.243.167.245:8080/SpringMVC/ocrservice/read", dataToBePassed )
-					// .done(function(data) {
-						// alert('result is'+data);
-				// }) ;
 		
 		var data1={"fileType":"jpg","encodedImage":base46URL}
 		$("#btngo").click(function(){ 	
           alert(base46URL);	
 		    var dataToBePassed={"encodedImage": base46URL,"fileType":"jpg"};
-             // $.post("http://162.243.167.245:8080/SpringMVC/ocrservice/read", dataToBePassed )
-					// .done(function(data) {
-						// alert('result is'+data);
-				// }) ;
+
          		  
          jQuery.ajax(
 				    {
-					 url : "http://162.243.167.245:8080/SpringMVC/ocrservice/read",
+					 url : "http://162.243.167.245:8082/SpringMVC/ocrservice/read",
 					 type: 'POST',
 					 dataType : "json",
 					 contentType: "application/json; charset=utf-8",

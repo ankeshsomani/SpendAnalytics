@@ -1,147 +1,210 @@
 SpendAnalytics app listening at http://0.0.0.0:8081
-Killed
-SpendAnalytics app listening at http://0.0.0.0:8081
-Killed
-SpendAnalytics app listening at http://0.0.0.0:8081
-
-events.js:72
-        throw er; // Unhandled 'error' event
-              ^
-Error: connect ECONNREFUSED
-    at errnoException (net.js:901:11)
-    at Object.afterConnect [as oncomplete] (net.js:892:19)
-sh: 0: Can't open start.js
-SpendAnalytics app listening at http://0.0.0.0:8081
-SpendAnalytics app listening at http://0.0.0.0:8081
-
-events.js:72
-        throw er; // Unhandled 'error' event
-              ^
-Error: connect ECONNREFUSED
-    at errnoException (net.js:901:11)
-    at Object.afterConnect [as oncomplete] (net.js:892:19)
-SpendAnalytics app listening at http://0.0.0.0:8081
-
-events.js:72
-        throw er; // Unhandled 'error' event
-              ^
-Error: listen EADDRINUSE
-    at errnoException (net.js:901:11)
-    at Server._listen2 (net.js:1039:14)
-    at listen (net.js:1061:10)
-    at Server.listen (net.js:1135:5)
-    at EventEmitter.listen (/usr/local/spendanalytics/WebServices/node_modules/express/lib/application.js:617:24)
-    at Object.<anonymous> (/usr/local/spendanalytics/WebServices/server.js:26:18)
-    at Module._compile (module.js:456:26)
-    at Object.Module._extensions..js (module.js:474:10)
-    at Module.load (module.js:356:32)
-    at Function.Module._load (module.js:312:12)
-Killed
-sh: 0: Can't open startup.js
+SyntaxError: Unexpected token t
+    at parse (/usr/local/spendanalytics/WebServices/node_modules/body-parser/lib/types/json.js:83:15)
+    at /usr/local/spendanalytics/WebServices/node_modules/body-parser/lib/read.js:116:18
+    at invokeCallback (/usr/local/spendanalytics/WebServices/node_modules/body-parser/node_modules/raw-body/index.js:262:16)
+    at done (/usr/local/spendanalytics/WebServices/node_modules/body-parser/node_modules/raw-body/index.js:251:7)
+    at IncomingMessage.onEnd (/usr/local/spendanalytics/WebServices/node_modules/body-parser/node_modules/raw-body/index.js:307:7)
+    at IncomingMessage.EventEmitter.emit (events.js:92:17)
+    at _stream_readable.js:920:16
+    at process._tickCallback (node.js:415:13)
+SyntaxError: Unexpected token t
+    at parse (/usr/local/spendanalytics/WebServices/node_modules/body-parser/lib/types/json.js:83:15)
+    at /usr/local/spendanalytics/WebServices/node_modules/body-parser/lib/read.js:116:18
+    at invokeCallback (/usr/local/spendanalytics/WebServices/node_modules/body-parser/node_modules/raw-body/index.js:262:16)
+    at done (/usr/local/spendanalytics/WebServices/node_modules/body-parser/node_modules/raw-body/index.js:251:7)
+    at IncomingMessage.onEnd (/usr/local/spendanalytics/WebServices/node_modules/body-parser/node_modules/raw-body/index.js:307:7)
+    at IncomingMessage.EventEmitter.emit (events.js:92:17)
+    at _stream_readable.js:920:16
+    at process._tickCallback (node.js:415:13)
+SyntaxError: Unexpected token t
+    at parse (/usr/local/spendanalytics/WebServices/node_modules/body-parser/lib/types/json.js:83:15)
+    at /usr/local/spendanalytics/WebServices/node_modules/body-parser/lib/read.js:116:18
+    at invokeCallback (/usr/local/spendanalytics/WebServices/node_modules/body-parser/node_modules/raw-body/index.js:262:16)
+    at done (/usr/local/spendanalytics/WebServices/node_modules/body-parser/node_modules/raw-body/index.js:251:7)
+    at IncomingMessage.onEnd (/usr/local/spendanalytics/WebServices/node_modules/body-parser/node_modules/raw-body/index.js:307:7)
+    at IncomingMessage.EventEmitter.emit (events.js:92:17)
+    at _stream_readable.js:920:16
+    at process._tickCallback (node.js:415:13)
 SpendAnalytics app listening at http://0.0.0.0:8081
 SpendAnalytics app listening at http://0.0.0.0:8081
-Killed
-sh: 0: Can't open startup.js
-sh: 0: Can't open startup.js
-sh: 0: Can't open startup.js
+[ { TRANSACTION_ID: 999987,
+    CIF: 53001,
+    BSNS_DATE: '14-Jul-16',
+    TRANSACTION_TYPE: 'DEBIT CARD TRANSACTION1',
+    DESCRIPTION: 'RELIANCE FRESH PURCHASE',
+    PAID_IN: 80,
+    PAID_OUT: 119,
+    BALANCE: 11121,
+    ACCOUNT_NO: 1236698612 } ]
+{ transactions: 
+   [ { TRANSACTION_ID: 999987,
+       CIF: '53001',
+       BSNS_DATE: '14-Jul-16',
+       TRANSACTION_TYPE: 'DEBIT CARD TRANSACTION1',
+       DESCRIPTION: 'RELIANCE FRESH PURCHASE',
+       PAID_IN: 80,
+       PAID_OUT: 119,
+       BALANCE: 11121,
+       ACCOUNT_NO: 1236698612 } ] }
+{ transactions: 
+   [ { TRANSACTION_ID: 999987,
+       CIF: 53001,
+       BSNS_DATE: '14-Jul-16',
+       TRANSACTION_TYPE: 'DEBIT CARD TRANSACTION1',
+       DESCRIPTION: 'RELIANCE FRESH PURCHASE',
+       PAID_IN: 80,
+       PAID_OUT: 119,
+       BALANCE: 11121,
+       ACCOUNT_NO: 1236698612 } ] }
+SyntaxError: Unexpected token t
+    at Object.parse (native)
+    at parse (/usr/local/spendanalytics/WebServices/node_modules/body-parser/lib/types/json.js:88:17)
+    at /usr/local/spendanalytics/WebServices/node_modules/body-parser/lib/read.js:116:18
+    at invokeCallback (/usr/local/spendanalytics/WebServices/node_modules/body-parser/node_modules/raw-body/index.js:262:16)
+    at done (/usr/local/spendanalytics/WebServices/node_modules/body-parser/node_modules/raw-body/index.js:251:7)
+    at IncomingMessage.onEnd (/usr/local/spendanalytics/WebServices/node_modules/body-parser/node_modules/raw-body/index.js:307:7)
+    at IncomingMessage.EventEmitter.emit (events.js:92:17)
+    at _stream_readable.js:920:16
+    at process._tickCallback (node.js:415:13)
+SyntaxError: Unexpected token [
+    at Object.parse (native)
+    at parse (/usr/local/spendanalytics/WebServices/node_modules/body-parser/lib/types/json.js:88:17)
+    at /usr/local/spendanalytics/WebServices/node_modules/body-parser/lib/read.js:116:18
+    at invokeCallback (/usr/local/spendanalytics/WebServices/node_modules/body-parser/node_modules/raw-body/index.js:262:16)
+    at done (/usr/local/spendanalytics/WebServices/node_modules/body-parser/node_modules/raw-body/index.js:251:7)
+    at IncomingMessage.onEnd (/usr/local/spendanalytics/WebServices/node_modules/body-parser/node_modules/raw-body/index.js:307:7)
+    at IncomingMessage.EventEmitter.emit (events.js:92:17)
+    at _stream_readable.js:920:16
+    at process._tickCallback (node.js:415:13)
+{ transactions: 
+   [ { TRANSACTION_ID: 999987,
+       CIF: 53001,
+       BSNS_DATE: '14-Jul-16',
+       TRANSACTION_TYPE: 'DEBIT CARD TRANSACTION1',
+       DESCRIPTION: 'RELIANCE FRESH PURCHASE',
+       PAID_IN: 80,
+       PAID_OUT: 119,
+       BALANCE: 11121,
+       ACCOUNT_NO: 1236698612 } ] }
+SpendAnalytics app listening at http://0.0.0.0:8081
+{ transactions: 
+   [ { TRANSACTION_ID: 999987,
+       CIF: 53001,
+       BSNS_DATE: '14-Jul-16',
+       TRANSACTION_TYPE: 'Income',
+       DESCRIPTION: 'Transaction Income Type',
+       PAID_IN: 0,
+       PAID_OUT: '230',
+       BALANCE: 0,
+       ACCOUNT_NO: 1236698612 } ] }
+0
+1
+1
+0
+{ transactions: 
+   [ { TRANSACTION_ID: 999987,
+       CIF: 53001,
+       BSNS_DATE: '14-Jul-16',
+       TRANSACTION_TYPE: 'Income',
+       DESCRIPTION: 'Income Test Type',
+       PAID_IN: 0,
+       PAID_OUT: 300,
+       BALANCE: 0,
+       ACCOUNT_NO: 1236698612 } ] }
+0
+1
+2
+0
+{ transactions: 
+   [ { TRANSACTION_ID: 999987,
+       CIF: 53001,
+       BSNS_DATE: '14-Jul-16',
+       TRANSACTION_TYPE: 'Income',
+       DESCRIPTION: 'test',
+       PAID_IN: 0,
+       PAID_OUT: 23,
+       BALANCE: 0,
+       ACCOUNT_NO: 1236698612 } ] }
+0
+1
+3
+0
+{ transactions: 
+   [ { TRANSACTION_ID: 999987,
+       CIF: 53001,
+       BSNS_DATE: '14-Jul-16',
+       TRANSACTION_TYPE: 'Income',
+       DESCRIPTION: 'test',
+       PAID_IN: 0,
+       PAID_OUT: 23,
+       BALANCE: 0,
+       ACCOUNT_NO: 1236698612 } ] }
+0
+1
+4
+0
+SpendAnalytics app listening at http://0.0.0.0:8081
+{ transactions: 
+   [ { TRANSACTION_ID: 999987,
+       CIF: 53001,
+       BSNS_DATE: '15-Jul-16',
+       TRANSACTION_TYPE: 'DEBIT CARD TRANSACTION1',
+       DESCRIPTION: 'RELIANCE FRESH PURCHASE',
+       PAID_IN: 80,
+       PAID_OUT: 119,
+       BALANCE: 11121,
+       ACCOUNT_NO: 1236698612 } ] }
 SpendAnalytics app listening at http://0.0.0.0:8081
 SpendAnalytics app listening at http://0.0.0.0:8081
-SpendAnalytics app listening at http://0.0.0.0:8081
-SpendAnalytics app listening at http://0.0.0.0:8081
-SpendAnalytics app listening at http://0.0.0.0:8081
-SpendAnalytics app listening at http://0.0.0.0:8081
-SpendAnalytics app listening at http://0.0.0.0:8081
-
-events.js:72
-        throw er; // Unhandled 'error' event
-              ^
-Error: listen EADDRINUSE
-    at errnoException (net.js:901:11)
-    at Server._listen2 (net.js:1039:14)
-    at listen (net.js:1061:10)
-    at Server.listen (net.js:1135:5)
-    at EventEmitter.listen (/usr/local/spendanalytics/WebServices/node_modules/express/lib/application.js:617:24)
-    at Object.<anonymous> (/usr/local/spendanalytics/WebServices/server.js:24:18)
-    at Module._compile (module.js:456:26)
-    at Object.Module._extensions..js (module.js:474:10)
-    at Module.load (module.js:356:32)
-    at Function.Module._load (module.js:312:12)
-SpendAnalytics app listening at http://0.0.0.0:8081
-SpendAnalytics app listening at http://0.0.0.0:8081
-SpendAnalytics app listening at http://0.0.0.0:8081
-
-events.js:72
-        throw er; // Unhandled 'error' event
-              ^
-Error: listen EADDRINUSE
-    at errnoException (net.js:901:11)
-    at Server._listen2 (net.js:1039:14)
-    at listen (net.js:1061:10)
-    at Server.listen (net.js:1135:5)
-    at EventEmitter.listen (/usr/local/spendanalytics/WebServices/node_modules/express/lib/application.js:617:24)
-    at Object.<anonymous> (/usr/local/spendanalytics/WebServices/server.js:26:18)
-    at Module._compile (module.js:456:26)
-    at Object.Module._extensions..js (module.js:474:10)
-    at Module.load (module.js:356:32)
-    at Function.Module._load (module.js:312:12)
-
-events.js:72
-        throw er; // Unhandled 'error' event
-              ^
-Error: listen EADDRINUSE
-    at errnoException (net.js:901:11)
-    at Server._listen2 (net.js:1039:14)
-    at listen (net.js:1061:10)
-    at Server.listen (net.js:1135:5)
-    at EventEmitter.listen (/usr/local/spendanalytics/WebServices/node_modules/express/lib/application.js:617:24)
-    at Object.<anonymous> (/usr/local/spendanalytics/WebServices/server.js:26:18)
-    at Module._compile (module.js:456:26)
-    at Object.Module._extensions..js (module.js:474:10)
-    at Module.load (module.js:356:32)
-    at Function.Module._load (module.js:312:12)
-
-events.js:72
-        throw er; // Unhandled 'error' event
-              ^
-Error: listen EADDRINUSE
-    at errnoException (net.js:901:11)
-    at Server._listen2 (net.js:1039:14)
-    at listen (net.js:1061:10)
-    at Server.listen (net.js:1135:5)
-    at EventEmitter.listen (/usr/local/spendanalytics/WebServices/node_modules/express/lib/application.js:617:24)
-    at Object.<anonymous> (/usr/local/spendanalytics/WebServices/server.js:26:18)
-    at Module._compile (module.js:456:26)
-    at Object.Module._extensions..js (module.js:474:10)
-    at Module.load (module.js:356:32)
-    at Function.Module._load (module.js:312:12)
-
-events.js:72
-        throw er; // Unhandled 'error' event
-              ^
-Error: listen EADDRINUSE
-    at errnoException (net.js:901:11)
-    at Server._listen2 (net.js:1039:14)
-    at listen (net.js:1061:10)
-    at Server.listen (net.js:1135:5)
-    at EventEmitter.listen (/usr/local/spendanalytics/WebServices/node_modules/express/lib/application.js:617:24)
-    at Object.<anonymous> (/usr/local/spendanalytics/WebServices/server.js:26:18)
-    at Module._compile (module.js:456:26)
-    at Object.Module._extensions..js (module.js:474:10)
-    at Module.load (module.js:356:32)
-    at Function.Module._load (module.js:312:12)
-
-events.js:72
-        throw er; // Unhandled 'error' event
-              ^
-Error: listen EADDRINUSE
-    at errnoException (net.js:901:11)
-    at Server._listen2 (net.js:1039:14)
-    at listen (net.js:1061:10)
-    at Server.listen (net.js:1135:5)
-    at EventEmitter.listen (/usr/local/spendanalytics/WebServices/node_modules/express/lib/application.js:617:24)
-    at Object.<anonymous> (/usr/local/spendanalytics/WebServices/server.js:26:18)
-    at Module._compile (module.js:456:26)
-    at Object.Module._extensions..js (module.js:474:10)
-    at Module.load (module.js:356:32)
-    at Function.Module._load (module.js:312:12)
+{ transactions: 
+   [ { TRANSACTION_ID: 999987,
+       CIF: 53001,
+       BSNS_DATE: '10-Jul-16',
+       TRANSACTION_TYPE: 'Income',
+       DESCRIPTION: 'Income type Decription',
+       PAID_IN: 0,
+       PAID_OUT: 2000,
+       BALANCE: 0,
+       ACCOUNT_NO: 1236698612 } ] }
+{ transactions: 
+   [ { TRANSACTION_ID: 999987,
+       CIF: 53001,
+       BSNS_DATE: '10-jul-16',
+       TRANSACTION_TYPE: '',
+       DESCRIPTION: 'kdhjesf',
+       PAID_IN: 0,
+       PAID_OUT: 4350,
+       BALANCE: 0,
+       ACCOUNT_NO: 1236698612 } ] }
+{ transactions: 
+   [ { TRANSACTION_ID: 999987,
+       CIF: 53001,
+       BSNS_DATE: '10-Jul-16',
+       TRANSACTION_TYPE: 'Transfer',
+       DESCRIPTION: 'Income Record Type',
+       PAID_IN: 0,
+       PAID_OUT: 1000,
+       BALANCE: 0,
+       ACCOUNT_NO: 1236698612 } ] }
+{ transactions: 
+   [ { TRANSACTION_ID: 999987,
+       CIF: 53001,
+       BSNS_DATE: '10-jul-16',
+       TRANSACTION_TYPE: 'on',
+       DESCRIPTION: 'test',
+       PAID_IN: 0,
+       PAID_OUT: 23,
+       BALANCE: 0,
+       ACCOUNT_NO: 1236698612 } ] }
+{ transactions: 
+   [ { TRANSACTION_ID: 999987,
+       CIF: 53001,
+       BSNS_DATE: '10-jul-16',
+       TRANSACTION_TYPE: '',
+       DESCRIPTION: 'test',
+       PAID_IN: 0,
+       PAID_OUT: 23,
+       BALANCE: 0,
+       ACCOUNT_NO: 1236698612 } ] }
 SpendAnalytics app listening at http://0.0.0.0:8081
