@@ -15,7 +15,6 @@
         <script src="js/highcharts.js"></script>
 		<script src="js/drilldown.js"></script>
 		<script type="text/javascript" src="js/ChartDashboard.js"></script>
-		<script type="text/javascript" src="js/Upload.js"></script>
 		<script >
 			$(document).ready(function(){
 			  $(".spyear2").hide(); 
@@ -53,46 +52,6 @@
 			   $("#go").hide(); 
 			 
 			   $("select").css("margin-top","-1em");
-			 });
-			 
-			 	  $('.yr').click(function(){
-				  $(".spyear2").hide(); 
-			  $(".spmonth2").hide(); 
-			    $(".spyear").show(); 
-			  $(".spmonth").hide(); 
-			    $(".spyear1").hide(); 
-			  $(".spmonth1").hide(); 
-			   $("#go").hide(); 
-			 
-			   $("select").css("margin-top","-1em");
-			 });
-			 
-			  $('.yryr').click(function(){
-				  $(".spyear2").show(); 
-			  $(".spmonth2").hide(); 
-			    $(".spyear").hide(); 
-			  $(".spmonth").hide(); 
-			    $(".spyear1").show(); 
-			  $(".spmonth1").hide(); 
-			   $("#go").hide(); 
-			 
-			   $("select").css("margin-top","-1em");
-			 });
-			 
-			  $('.yrmn').click(function(){
-				  $(".spyear2").hide(); 
-			  $(".spmonth2").hide(); 
-			    $(".spyear").hide(); 
-			  $(".spmonth").hide(); 
-			    $(".spyear1").hide(); 
-			  $(".spmonth1").hide(); 
-			   $("#go").hide(); 
-			 
-			   $("select").css("margin-top","-1em");
-			 });
-			 
-			   $('.clk').click(function(){
-				  $(".footermenu").hide(); 
 			   
 			   
 			   
@@ -159,7 +118,6 @@
 								<li><a href="javascript:void(0)"  data-dismiss="modal" class="showChart" data-rel="#transaction-div"><table class="iconmenu"><tbody><tr><td><img src="img/transSummary_icn.png" width="16px" /></td><td>Transaction Summary</td></tr></tbody></table></a></li>
 								<li><a href="javascript:void(0)"  data-dismiss="modal"  class="showChart" data-rel="#average_chart_section"><table class="iconmenu"><tbody><tr><td><img src="img/avg%20expense.png" width="16px" /></td><td> Total Yearly Expense</td></tr></tbody></table></a></li>
 								<li><a href="javascript:void(0)"  data-dismiss="modal" class="showChart" data-rel="#SplinewithSymbol-chart-section"><table class="iconmenu"><tbody><tr><td><img src="img/monthly%20variation.png" width="16px" /></td><td> Monthly Comparison </td></tr></tbody></table></a></li>
-								<li><a href="javascript:void(0)"  data-dismiss="modal" class="showChart" data-rel="#UploadStatement-chart-section"><table class="iconmenu"><tbody><tr><td><img src="img/ic_file_upload_black_24dp.png" width="16px" /></td><td> Upload Statement</td></tr></tbody></table></a></li>
                                   </ul>
                              </div>
                             
@@ -307,7 +265,7 @@
 					<option >2015</option>
 					<option selected>2016</option>
 					</select>
-						
+
                         </td>
 						<td>
 						
@@ -599,74 +557,20 @@
 						</div>
 					</div>
 				</div>
-				
-				<div class="panel-group" role="tablist" aria-multiselectable="true" id="UploadStatement-chart-section">
-					<div id='loader' style='display:none;position:absolute;'><img src='img/loader.gif' style="background-attachment: fixed;background-position: center"/></div>
-
-					<div class="panel panel-default chart_section">
-						<div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseTransSumm" aria-expanded="true" aria-controls="collapseTransSumm">
-							<h4 class="panel-title">
-								<a role="button" >
-								  Upload Statement
-								</a>
-                                 <span><img src="img/dwnarw_icn.png" class="iconarrow" alt="Cinque Terre" width="15" height="15"></span>
-							</h4>
-						</div>
-						<div id="collapseTransSumm" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-							<div class="panel-body">
-								<div class="col-xs-12 col-md-12 datapadding">
-                                    <div class=" MT-15">
-                                 <table class="table table-striped  table-hover table-condensed" id="transactions_table">
-                                            <thead>
-                                                <tr>
-                                                    <th><input type="file" id="filePicker"></th>
-                                                    <th>
-                                                       
-                                                        	<button type="button" class="btn btn-primary" id="btngo">GO</button>
-                                                    </th>
-                                                   
-                                                </tr>
-                                            </thead>
-                                        </table>								
-								</div></div>
-                                <div class="col-xs-12 col-md-12">
-                                    <div class=" MT-15">
-                                        <table class="table table-striped table-bordered table-hover table-condensed" id="transactions_table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Date</th>
-                                                    <th>Description</th>
-                                                    <th>Type</th>
-													<th>Paid-In (£)</th>
-													<th>Paid-Out(£)</th>
-													
-                                                </tr>
-                                            </thead>
-                                            <tbody id="transactions_table_data1"></tbody>
-                                        </table>
-										<button type="button" class="btn btn-primary" id="btnsubmit">Submit</button>
-                                    </div>
-                                </div>
-                                    
-                            
-							</div>
-						</div>
-					</div>
-				</div>
 			</section>
 			
 			<footer class="footermenu">
 			
 			
 				<ul class="footer-menu">
-					<li class="toggleThis clk"><a href="javascript:void(0)" class="showChart shd" data-rel="#pie_chart_section"><img src="img/piechart.png" class="img-responsive icmob" /></a></li>
-					<li class="toggleThis clk"><a href="javascript:void(0)" class="showChart yr" data-rel="#bar_chart_section"><img src="img/monthexp_icn.png" class="img-responsive icmob" /></a></li>
-					<li class="clk"><a href="javascript:void(0)" class="showChart wkcom" data-rel="#line-chart-section "><img src="img/weekCompare_icn.png" class="img-responsive icmob" /></a></li>
-					<li class="clk"><a href="javascript:void(0)" class="showChart wkcom" data-rel=" #combination-chart-section"><img src="img/catgCompare_icn.png" class="img-responsive icmob" /></a></li>
-					<li class="toggleThis clk"><a href="javascript:void(0)" class="showChart shd" data-rel="#transaction-div"><img src="img/transSummary_icn.png" class="img-responsive icmob" /></a></li>
-					<li class="toggleThis yrmn clk"><a href="javascript:void(0)" class="showChart shd" data-rel="#average_chart_section"><img src="img/avg%20expense.png" class="img-responsive icmob" /></a></li>
-					<li class="clk"><a href="javascript:void(0)" class="showChart yryr" data-rel="#SplinewithSymbol-chart-section"><img src="img/monthly%20variation.png" class="img-responsive icmob" /></a></li>
-					<li class="clk"><a href="javascript:void(0)" class="showChart " data-rel="#UploadStatement-chart-section"><img src="img/ic_file_upload_black_24dp.png" class="img-responsive upimg" /></a></li>
+					<li class="toggleThis"><a href="javascript:void(0)" class="showChart shd" data-rel="#pie_chart_section"><img src="img/piechart.png" class="img-responsive icmob" /></a></li>
+					<li class="toggleThis"><a href="javascript:void(0)" class="showChart shd" data-rel="#bar_chart_section"><img src="img/monthexp_icn.png" class="img-responsive icmob" /></a></li>
+					<li class=""><a href="javascript:void(0)" class="showChart wkcom" data-rel="#line-chart-section "><img src="img/weekCompare_icn.png" class="img-responsive icmob" /></a></li>
+					<li class=""><a href="javascript:void(0)" class="showChart wkcom" data-rel=" #combination-chart-section"><img src="img/catgCompare_icn.png" class="img-responsive icmob" /></a></li>
+					<li class="toggleThis"><a href="javascript:void(0)" class="showChart shd" data-rel="#transaction-div"><img src="img/transSummary_icn.png" class="img-responsive icmob" /></a></li>
+					<li class="toggleThis"><a href="javascript:void(0)" class="showChart shd" data-rel="#average_chart_section"><img src="img/avg%20expense.png" class="img-responsive icmob" /></a></li>
+					<li class=""><a href="javascript:void(0)" class="showChart wkcom" data-rel="#SplinewithSymbol-chart-section"><img src="img/monthly%20variation.png" class="img-responsive icmob" /></a></li>
+					<li class=""><a href="javascript:void(0)" class="showChart wkcom" data-rel="#SplinewithSymbol-chart-section"><img src="img/monthly%20variation.png" class="img-responsive icmob" /></a></li>
 					
 					
 					

@@ -91,18 +91,24 @@ $(document).ready(function(){
 		//var data=base46URL;
 		
 		 var dataToBePassed={"encodedImage": base46URL,"fileType":"jpg"};
+         
+		  // $.post("http://162.243.167.245:8080/SpringMVC/ocrservice/read", dataToBePassed )
+					// .done(function(data) {
+						// alert('result is'+data);
+				// }) ;
+		
 		var data1={"fileType":"jpg","encodedImage":base46URL}
 		$("#btngo").click(function(){ 	
-          //alert(base46URL);	
-		 $("#loader").show();
-		 $("#btngo").attr("disabled", true);
-		 
+          alert(base46URL);	
 		    var dataToBePassed={"encodedImage": base46URL,"fileType":"jpg"};
-             
+             // $.post("http://162.243.167.245:8080/SpringMVC/ocrservice/read", dataToBePassed )
+					// .done(function(data) {
+						// alert('result is'+data);
+				// }) ;
          		  
          jQuery.ajax(
 				    {
-					 url : "http://159.203.188.5:8082/SpringMVC/ocrservice/read",
+					 url : "http://162.243.167.245:8080/SpringMVC/ocrservice/read",
 					 type: 'POST',
 					 dataType : "json",
 					 contentType: "application/json; charset=utf-8",
@@ -113,16 +119,10 @@ $(document).ready(function(){
 					  {
 					    $('<tr><td class="editable">'+data.transactions[i].transactionDate.replace(/ /g,'-')+'</td><td class="editable">'+data.transactions[i].description +'</td><td class="editable">'+data.transactions[i].transactionType+'</td><td class="editable">'+data.transactions[i].paidIn+'</td><td class="editable">'+data.transactions[i].paidOut+'</td><tr>').appendTo('#transactions_table_data1');
 					  }
-					  $("#loader").hide();
-					   $("#btngo").removeAttr("disabled");
-					   
 					 //console.log(data); 
 					 },
-					 error: function() {console.log("Error");
-						$("#loader").hide();
-						 $("#btngo").removeAttr("disabled");
-						 
-						}
+					 error: function() {console.log("Error"); }
+
 					 });
 
 	  

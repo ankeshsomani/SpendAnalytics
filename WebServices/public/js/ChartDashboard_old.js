@@ -52,7 +52,7 @@ var cif=prmarr[1];
 	
 function DrawPieChart(year,month)
 {			
-	$.getJSON('http://162.243.167.245:8081/listCategorySubcategoryExpense?cif='+cif+'&year='+year+'&month='+month, function(json1) {
+	$.getJSON('http://45.55.195.106:8081/listCategorySubcategoryExpense?cif='+cif+'&year='+year+'&month='+month, function(json1) {
 		var categories=[];
 		//we will push categories in this variable from received JSON
 		
@@ -170,8 +170,8 @@ function DrawPieChart(year,month)
 		//total_expense_val=0;
 			for(var z=0; z< length;z++){
 				var expenses=parseFloat(json1.rows[z].EXPENSES);
-				var subcatname=json1.rows[z].SUBCATEGORY;
-				var catname=json1.rows[z].CATEGORY;
+				var subcatname=json1.rows[z].SUB_CATG_NAME;
+				var catname=json1.rows[z].CATG_NAME;
 				
 				var prevcatname;
 				if(z>0){
@@ -214,7 +214,7 @@ function DrawPieChart(year,month)
 	
 	
 	//function()
-	$.getJSON('http://162.243.167.245:8081/getAllMonthExpenses?cif='+cif+'&year='+year, function(json1) {   
+	$.getJSON('http://45.55.195.106:8081/getAllMonthIncomeExpenses?cif='+cif+'&year='+year, function(json1) {   
 		var categories=[];
 		//we will push categories in this variable from received JSON
 		
@@ -337,10 +337,8 @@ function DrawPieChart(year,month)
 		}
 		chart2=new Highcharts.Chart(options1);
 	});
-LoadTransactionList();
-	function LoadTransactionList()
-	{
-		$.getJSON('http://162.243.167.245:8081/listtransactiondata?cif='+cif+'&year='+year+'&month='+month,function(jsondata) {
+
+	$.getJSON('http://45.55.195.106:8081/listtransactiondata?cif='+cif+'&year='+year+'&month='+month,function(jsondata) {
 		
 		$('#transactions_table_data').empty();
 		
@@ -351,19 +349,17 @@ LoadTransactionList();
 			checkboxbtn='<input type=checkbox />'
 			
 			
-			if(obj.TAGS=="" || obj.TAGS==null)
+			if(obj.TAGS=="")
 				tempTag='<a class="addtag">Add Tag</a>';		
 			else
-				tempTag='<span class="tagDetails">'+obj.TAGS+'<a href="#" class="MR-10"><i class="addtag fa fa-pencil"></i></a><a href="" class="ML-10 deletetag hide"><i class="fa fa-times"></i></a>';
-			
-				
+				tempTag='<span class="tagDetails"><a href="#" class="MR-10 hide"><i class="fa fa-pencil"></i></a>'+obj.TAGS+'<a href="" class="ML-10 deletetag hide"><i class="fa fa-times"></i></a></span>';
 
 				/*Display service data into table*/
 					
 			$('<tr><td>'+checkboxbtn+'</td><td>'+obj.BSNS_DATE+'</td><td>'+obj.DESCRIPTION+'</td><td>'+obj.EXPENSES+'</td><td>'+tempTag+'</td><tr>').appendTo('#transactions_table_data');
 			
 				/*Show Edit and Delete button on click of checkbox*/
-			/*As per new requirement dont show Add and hide button
+			
 			$('#transactions_table_data :checkbox').click(function() {
 				
 				var $this = $(this);
@@ -374,47 +370,31 @@ LoadTransactionList();
 					$('.actionBtn').addClass('hide')
 				}
 			});
-				*/
 				
+				
+				
+			/**/
 				
 			/*Add tag functionality*/
 				
 			$('.addtag').click(function(){
-				
 				var $this=$(this);
-				var inputbox='<input type="text" class="addTagTextBox"/><a class="saveTag ML-10"><i class="fa fa-check"></i></a><a class="cancelTag ML-10"><i class="fa fa-times"></i></a>'
-				//this.parentElement.parentElement.style.display='none'; not in use
+				var inputbox='<input type="text" class="addTagTextBox"><a class="saveTag ML-10"><i class="fa fa-check"></i></a><a class="cancelTag ML-10"><i class="fa fa-times"></i></a>'
 				$(this).html(inputbox).find('.addTagTextBox').focus();
 				
 				/*Save new added tag*/
 				
 				$('.saveTag').click(function(){
-					var objDesc =$(this).closest("tr").find('td:eq(2)').text();
-					var tagData=$('.addTagTextBox').val();
-					saveUpdatedCategory(objDesc,tagData)
-					//this.parentElement.parentElement.innerHTML=tagData;
+				var tagData=$('.addTagTextBox').val();
+				this.parentElement.parentElement.innerHTML=tagData;
 				});
 			
 				$('.cancelTag').click(function(){
-					// //alert("Cancel:-" + $(this).closest("tr").find('td:eq(4)').text());
-					// // alert("Cancel:" + $(this).closest("tr").find('td:eq(2)').text() + ":" + $(this).closest("tr").find('td:eq(4)').text());
-					// // alert($(this).parent().find('.addTagTextBox').val());
-					
-					// var objTagData =$(this).closest("tr").find('td:eq(4)').text();
-					// var temp="";
-					// if(objTagData=="")
-						// temp='<a class="addtag">Add Tag</a>';
-					// else
-					// {
-						// temp='<span class="tagDetails">'+objTagData+'<a href="#" class="MR-10"><i class="addtag fa fa-pencil"></i></a><a href="" class="ML-10 deletetag hide"><i class="fa fa-times"></i></a>';
-						
-					// this.parentElement.parentElement.innerHTML=temp;
-					//$('#transactions_table_data').empty();
-					LoadTransactionList();
+					var temp='<a class="addtag">Add Tag</a>';
+					this.parentElement.parentElement.innerHTML=temp;
 				});
 				
 			});
-			
 			
 			
 			//Delete transaction functionality
@@ -448,46 +428,11 @@ LoadTransactionList();
 			
 		});	
 	
-			
-			
-			
 	});
-	}
-	function saveUpdatedCategory(desc,tag)
-	{		
-		//alert(desc + ":" + tag);
-		var transactionElement = {
-				"DESCRIPTION": desc,
-				"SUBCATEGORY": tag
-			}
-	   jQuery.ajax(
-			{
-			type: 'POST',
-			url : "http://162.243.167.245:8081/updateSubcategory",
-			dataType : "json",
-			contentType: "application/json; charset=utf-8",
-			data: JSON.stringify(transactionElement),
-			success:function(data2) 
-			 { 
-				alert("Success");
-				//$('#transactions_table_data').empty();
-				LoadTransactionList();
-			  //alert(data2);
-				//console.log(data2);
-			 },
-			 error: function(data2) {
-				alert("fail");
-			 //alert(data2); 	
-			 //console.log(data2);
-			 }
-			
-			 });
-			
-	}
 	
 	// average chart 
 	
-	$.getJSON('http://162.243.167.245:8081/AvgSpendCategory?cif='+cif, function(json1) {
+	$.getJSON('http://45.55.195.106:8081/AvgSpendCategory?cif='+cif, function(json1) {
 	     var seriesdata1=[];
 		 var drilleddata1=[];
 		 var drilleddowndata1=[];
@@ -499,14 +444,14 @@ LoadTransactionList();
 		var sum=0;
 		//total_expense_val=0;
 			for(var z=0; z< length;z++){
-				var yearno=parseFloat(json1.rows[z].BSNS_YEAR);
+				var yearno=parseFloat(json1.rows[z].YEAR_NO);
 				if(baseYear.indexOf(yearno)<0)
 				{
 				var prevyearno;
 					for(var i=0; i< length;i++){
-						var year_no=parseFloat(json1.rows[i].BSNS_YEAR);
+						var year_no=parseFloat(json1.rows[i].YEAR_NO);
 						var totalexpenses=parseFloat(json1.rows[i].TOTEXPENSES);
-						var catname=json1.rows[i].CATEGORY;
+						var catname=json1.rows[i].CATG_NAME;
 						var averegexpense=parseFloat(Math.round(json1.rows[i].AVGEXPENSES));
 						
 						
@@ -538,25 +483,23 @@ LoadTransactionList();
 						drilleddowndata1.push({"name" :yearno,"id":yearno,"data":drilleddata1});
 					}
 			}	
-	
+			//alert(JSON.stringify(drilleddowndata1));
+			//alert(JSON.stringify(seriesdata1));
+	//average chart
+	$(function () {
+
     // Create the chart
-    var options={
+    $('#average-chart').highcharts({
         chart: {
-            type: 'column',
-			renderTo:'average-chart'
+            type: 'column'
         },
         title: {
-            text: ''
+            text: 'Basic drilldown'
         },
         xAxis: {
             type: 'category'
         },
-		 yAxis: {
-            title: {
-                text: 'Total Expense (£)'
-            }
 
-        },
         legend: {
             enabled: false
         },
@@ -578,182 +521,19 @@ LoadTransactionList();
         drilldown: {
             series: drilleddowndata1
 			}
-    }
-  chart2=new Highcharts.Chart(options);
-
-});
-
-//Spline with symbol chart
-
-$.getJSON('http://162.243.167.245:8081/getAllMonthExpenses?cif='+cif+'&year='+year, function(json1) {   
-		var categories=[];
-		//we will push categories in this variable from received JSON
-		var data2=[];
-		
-		
-		
-			var length=json1.rows.length;
-		var monthlyExpenses=new Object();
-		
-			for(var z=0; z< length;z++){
-							
-				var expenses=parseFloat(json1.rows[z].EXPENSES);
-				var month=parseFloat(json1.rows[z].MONTH_NO);	
-				monthlyExpenses[month]=expenses;
-				switch (month)
-				{
-					case 1:expense_month='Jan';
-					break;
-					case 2:expense_month='Feb';
-					break;
-					case 3:expense_month='Mar';
-					break;
-					case 4:expense_month='Apr';
-					break;
-					case 5:expense_month='May';
-					break;
-					case 6:expense_month='Jun';
-					break;
-					case 7:expense_month='Jul';
-					break;
-					case 8:expense_month='Aug';
-					break;
-					case 9:expense_month='Sep';
-					break;
-					case 10:expense_month='Oct';
-					break;
-					case 11:expense_month='Nov';
-					break;
-					case 12:expense_month='Dec';
-					break;
-				}
-				categories.push(expense_month);
-				data2.push(expenses);
-			}
-			
-			var data4=[];
-			//second year data
-			var year1=(year-1);
-			
-			//alert(year1);
-			$.getJSON('http://162.243.167.245:8081/getAllMonthExpenses?cif='+cif+'&year='+year1, function(json2) {   
-			//we will push categories in this variable from received JSON
-			var length=json2.rows.length;
-			var monthlyExpenses=new Object();
-		
-			for(var z=0; z< length;z++){
-				var expenses=parseFloat(json2.rows[z].EXPENSES);
-				var month=parseFloat(json2.rows[z].MONTH_NO);	
-				monthlyExpenses[month]=expenses;
-				switch (month)
-				{
-					case 1:expense_month='Jan';
-					break;
-					case 2:expense_month='Feb';
-					break;
-					case 3:expense_month='Mar';
-					break;
-					case 4:expense_month='Apr';
-					break;
-					case 5:expense_month='May';
-					break;
-					case 6:expense_month='Jun';
-					break;
-					case 7:expense_month='Jul';
-					break;
-					case 8:expense_month='Aug';
-					break;
-					case 9:expense_month='Sep';
-					break;
-					case 10:expense_month='Oct';
-					break;
-					case 11:expense_month='Nov';
-					break;
-					case 12:expense_month='Dec';
-					break;
-				}
-				if(categories.indexOf(expense_month)<0)
-					categories.push(expense_month);
-				
-				data4.push(expenses);
-			}
-	
-    var options={
-        chart: {
-            type: 'spline',
-			renderTo:'spline-chart'
-        },
-        title: {
-            text: ''
-        },
-        subtitle: {
-            text: ''
-        },
-        xAxis: {
-            categories: categories
-        },
-        yAxis: {
-            title: {
-                text: 'Expense (£)'
-            },
-            labels: {
-                formatter: function () {
-                    return this.value + '';
-                }
-            }
-        },
-        tooltip: {
-            crosshairs: true,
-            shared: true
-        },
-        plotOptions: {
-            spline: {
-                marker: {
-                    radius: 4,
-                    lineColor: '#666666',
-                    lineWidth: 1
-                }
-            }
-        },
-        series: [{
-            name: year,
-            marker: {
-                symbol: 'square'
-            },
-            data: data2
-
-        },
-		{
-            name: year1,
-            marker: {
-                symbol: 'diamond'
-            },
-            data: data4
-
-        }
-		]
-    
-	}
-	chart2=new Highcharts.Chart(options);
-});
+    })
 });
 
 
+});
 	
 }
 /****/	
 
-	var objTransactionType = "";
-	$("input:radio[name=optradio]").change(function(){
-		if( $(this).is(":checked") ){ // check if the radio is checked
-			objTransactionType = $(this).val(); // retrieve the value
-		}
-	});
-
 	$('#addTransaction #addNewTransaction').on('click',function(){	
 		
-		//$('#addTransaction').modal('hide');
-			
+		$('#addTransaction').modal('hide');
+		
 			var amount=$("#amount").val();
 			var description=$("#description").val();
 			var date=$('#date').val();
@@ -768,87 +548,23 @@ $.getJSON('http://162.243.167.245:8081/getAllMonthExpenses?cif='+cif+'&year='+ye
 			{
 				tempTag=tags;
 			}
-			///  add transaction 
 			
-			if(validateform())
-			{
-			$('#addTransaction').modal('hide');
+			var table = document.getElementById("transactions_table_data");
+			var row = table.insertRow(-1);
 			
+			var checktransaction = row.insertCell(0);
+			var trans_date = row.insertCell(1);
+			var trans_desc = row.insertCell(2);
+			var trans_amount = row.insertCell(3);
+			var trans_tags = row.insertCell(4);
+			
+			checktransaction.innerHTML = checkBoxBtn;
+			trans_date.innerHTML = date;
+			trans_amount.innerHTML = amount;
+			trans_desc.innerHTML = description;
+			trans_tags.innerHTML = tempTag;
 
-			var transactionCollection = {};
-			var transactions = [];
-			transactionCollection.transactions = transactions;
-			
-			var objDescription=$("#addTransaction #description").val();
-			var objAmount = $("#addTransaction #amount").val();
-			var objDate = $('#date').val();
-			
-
-			var transactionElement = {
-				"TRANSACTION_ID": 999987, 
-                "CIF": parseInt(cif), 
-				"BSNS_DATE": objDate, //"14-Jul-16", 
-				"TRANSACTION_TYPE": objTransactionType, 
-				"DESCRIPTION": objDescription,//, 
-				"PAID_IN": 0,//0, 
-				"PAID_OUT": parseInt(objAmount),
-				"BALANCE": 0,//0, 
-				"ACCOUNT_NO": 1236698612
-                
-			}
-			transactionCollection.transactions.push(transactionElement);
-			
-			   jQuery.ajax(
-				    {
-					type: 'POST',
-					//url : "http://localhost:8082/addTransactions",
-					url : "http://162.243.167.245:8081/addTransactions",
-					dataType : "json",
-					contentType: "application/json; charset=utf-8",
-					data: JSON.stringify(transactionCollection),
-					
-					success:function(data2) 
-					 { 
-						alert("Success");
-						//location.reload();
-						//$('#transactions_table_data').empty();
-						LoadTransactionList();
-					  
-					 },
-					 error: function(data2) {
-						alert("fail");
-					 //alert(data2); 	
-					 //console.log(data2);
-					 }
-					
-					 });
-			
-			
-			// var table = document.getElementById("transactions_table_data");
-			// var row = table.insertRow(-1);
-			
-			// var checktransaction = row.insertCell(0);
-			// var trans_date = row.insertCell(1);
-			// var trans_desc = row.insertCell(2);
-			// var trans_amount = row.insertCell(3);
-			// var trans_tags = row.insertCell(4);
-			
-			// checktransaction.innerHTML = checkBoxBtn;
-			// trans_date.innerHTML = date;
-			// trans_amount.innerHTML = amount;
-			// trans_desc.innerHTML = description;
-			// trans_tags.innerHTML = tempTag;
-			
-			}
-
-			
-			 
-			
-		
-	});	
-	
-	$('.addNewtag').click(function(){
-				
+			$('.addNewtag').click(function(){
 				var $this=$(this);
 				var inputbox='<input type="text" class="addTagTextBox"><a class="saveTag ML-10"><i class="fa fa-check"></i></a><a class="cancelTag ML-10"><i class="fa fa-times"></i></a>'
 				$(this).html(inputbox).find('.addTagTextBox').focus();
@@ -856,7 +572,6 @@ $.getJSON('http://162.243.167.245:8081/getAllMonthExpenses?cif='+cif+'&year='+ye
 				/*Save new added tag*/
 				
 				$('.saveTag').click(function(){
-				alert("alert save tag");
 				var tagData=$('.addTagTextBox').val();
 				this.parentElement.parentElement.innerHTML=tagData;
 				});
@@ -867,61 +582,10 @@ $.getJSON('http://162.243.167.245:8081/getAllMonthExpenses?cif='+cif+'&year='+ye
 				});
 				
 			});
+			
+		
+	});			
 
-//Start Not required 
-function isValidDate(subject){
-  if (subject.match(/^(0[1-9]|[12][0-9]|3[01])[\- \/.](?:(0[1-9]|1[012])[\- \/.](19|20)[0-9]{2})$/)){
-    return true;
-  }else{
-    return false;
-  }
-}	
-//End Not required 
-
-function ValidateDate(subject) {
-  //var dtRegex = new RegExp("^([0]?[1-9]|[1-2]\\d|3[0-1])-(JAN|FEB|MAR|APR|MAY|JUN|JULY|AUG|SEP|OCT|NOV|DEC)-[1-2]\\d{3}$", 'i');
-  var dtRegex = new RegExp("^([0]?[1-9]|[1-2]\\d|3[0-1])-(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)-[1-2]\\d{1}$", 'i');
-  return dtRegex.test(subject);
-}
-
-function validateform(){ 
-                 regExp= /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
-			             var amount=$("#amount").val();
-						 if($('#date').val() ==""){
-								alert("Please Enter date");
-								return false;
-						 }
-						  if($('#date').val() !=""){
-							 if(!ValidateDate($('#date').val())){
-								alert("Please enter valid date");
-								return false;
-							 }
-						 }
-						 
-				         if($("#description").val()==""){
-							alert("Please Enter description");
-								return false;
-						 }
-						 if($("#amount").val()==""){
-							alert("Please Enter amount");
-								return false;
-						 }
-						 if($("#amount").val()!=""){
-						   if(isNaN(amount)){
-								alert("Please Enter Valid amount");
-								return false;
-								}
-						 }
-						 // if(!regExp.match($('#date').val())){
-						   // alert("Please enter valid date");
-						   // return false;
-						 // }
-						 
-						
-						 
-						 return true;
-				
-					}		  
 
 $('#editTransactionModal #submit').click(function(){
 	$('#editTransactionModal').modal('hide');
@@ -929,36 +593,6 @@ $('#editTransactionModal #submit').click(function(){
 	var updatedAmt=$('#editTransAmount').val();
 	var updatedTags=$('#editTransTags').val();
 	var updatedDate=$('#editTransDate').val();
-	
-	
-	//*Start *//
-	
-		jQuery.ajax(	
-				    {
-					type: 'POST',
-					url : "http://162.243.167.245:8081/updateSubcategory",
-					dataType : "json",
-					contentType: "application/json; charset=utf-8",
-					data: {"DESCRIPTION": "ISLINGTON POST OFFICE","SUBCATEGORY": "POSTAL EXPENSES"},
-					success:function(data2) 
-					 { 
-						alert("Success");
-						location.reload();
-					  //alert(data2);
-						//console.log(data2);
-					 },
-					 error: function(data2) {
-						alert("fail");
-					 //alert(data2); 	
-					 //console.log(data2);
-					 }
-					
-					 });
-			
-	//*End *//
-	
-	
-	
 
 	var getCheckedCheckbox=$('#transactions_table_data input[type=checkbox]:checked');
 	getCheckedCheckbox.closest("tr").find('td:eq(1)').text(updatedDate);
@@ -1004,15 +638,13 @@ $('#editTransactionModal #submit').click(function(){
 
 
 		
-	$('#go').on('click',function(){
-	alert("hi");
-		var year1=$('#first_year_selection').val();	
+	$('.comparison_selector').on('change',function(){
+		var year1=$('#first_year_selection').val();
+		var month1=$('#first_month_selection').val();
+		var year2=$('#second_year_selection').val();
+		var month2=$('#second_month_selection').val();
 		
-		var month1=$('#first_month_selection').val();	
-		var year2=$('#second_year_selection').val();	
-		var month2=$('#second_month_selection').val();	
-		
-		GetMonthlyData(year1,month1,year2,month2);	
+		GetMonthlyData(year1,month1,year2,month2);
 	});
 		
 	GetMonthlyData("2015","6","2016","6");
@@ -1021,7 +653,7 @@ $('#editTransactionModal #submit').click(function(){
 			var chartData = [];
 	var chartCategories=[];
 	var expData = [];
-		$.getJSON('http://162.243.167.245:8081/listExpensesByWeek?cif='+cif+'&year='+year1+'&month='+month1, function(json1){
+		$.getJSON('http://45.55.195.106:8081/listExpensesByWeek?cif='+cif+'&year='+year1+'&month='+month1, function(json1){
 
 			var monthName,weekName;
 			switch(month1){
@@ -1103,7 +735,7 @@ $('#editTransactionModal #submit').click(function(){
 				}
 
 				///////////////Second year data get
-		$.getJSON('http://162.243.167.245:8081/listExpensesByWeek?cif='+cif+'&year='+year2+'&month='+month2, function(json1) {				
+		$.getJSON('http://45.55.195.106:8081/listExpensesByWeek?cif='+cif+'&year='+year2+'&month='+month2, function(json1) {				
 					
 			var monthNumber,weekName;
 			var length=json1.rows.length;
@@ -1211,7 +843,7 @@ $('#editTransactionModal #submit').click(function(){
 	var chartCategories1=[];
 	var expData1 = [];
 	
-	$.getJSON('http://162.243.167.245:8081/listExpensesByCategoryMonthly?cif='+cif+'&year='+year1+'&month='+month1, function(json1) {
+	$.getJSON('http://45.55.195.106:8081/listExpensesByCategoryMonthly?cif='+cif+'&year='+year1+'&month='+month1, function(json1) {
 
 		var length=json1.rows.length;
 		//length=2;
@@ -1219,7 +851,7 @@ $('#editTransactionModal #submit').click(function(){
 		var sum=0;
 			for(var z=0; z< length;z++){
 				var expenses=parseFloat(json1.rows[z].EXPENSES);
-				var catname=json1.rows[z].CATEGORY;
+				var catname=json1.rows[z].CATG_NAME;
 				var monthName=parseInt(month1);
 				monthName=getMonthName(monthName);
 				expData1.push(expenses);
@@ -1228,7 +860,7 @@ $('#editTransactionModal #submit').click(function(){
 				}
 				}
 				
-	$.getJSON('http://162.243.167.245:8081/listExpensesByCategoryMonthly?cif='+cif+'&year='+year2+'&month='+month2, function(json1) {
+	$.getJSON('http://45.55.195.106:8081/listExpensesByCategoryMonthly?cif='+cif+'&year='+year2+'&month='+month2, function(json1) {
 	
 		var length=json1.rows.length;
 
@@ -1236,7 +868,7 @@ $('#editTransactionModal #submit').click(function(){
 						expData1=[];
 			for(var z=0; z< length;z++){
 				var expenses=parseFloat(json1.rows[z].EXPENSES);
-				var catname=json1.rows[z].CATEGORY;
+				var catname=json1.rows[z].CATG_NAME;
 				var monthName=parseInt(month2);
 			monthName=getMonthName(monthName);
 
@@ -1331,7 +963,7 @@ $('#editTransactionModal #submit').click(function(){
 		if($('#user_details').hasClass('hide'))
 		{
 			$('#user_details').removeClass('hide');
-			$.getJSON('http://162.243.167.245:8081/listCustomerDetails?cif='+cif+'',function(json1){
+			$.getJSON('http://45.55.195.106:8081/listCustomerDetails?cif='+cif+'',function(json1){
 				var cust_name=json1.rows[0].Cust_Name;
 				var cust_contact=json1.rows[0].Cust_Contact;
 				var cust_email=json1.rows[0].Cust_Email;
@@ -1350,24 +982,6 @@ $('#editTransactionModal #submit').click(function(){
 			$('#user_details').addClass('hide')
 		}
 	});
-	
-	$('#dashboard-container').click(function(){
-
-		$.getJSON('http://162.243.167.245:8081/listCustomerDetails?cif='+cif+'',function(json1){
-		
-				var cust_name=json1.rows[0].Cust_Name;
-				var cust_contact=json1.rows[0].Cust_Contact;
-				var cust_email=json1.rows[0].Cust_Email;
-				$('.user_name').html(cust_name);
-				$('.user_mob_no').html('0'+cust_contact);
-				$('.user_mail_id').html(cust_email);
-			});
-			
-		
-	
-	});
-	
-	
 });
 
 function getMonthName(monthName){

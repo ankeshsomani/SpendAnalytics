@@ -13,9 +13,11 @@ var selectedMonth=6;
 var cif=prmarr[1];
 	$('.total_expense select').change(function() {
 		var month;
+
 		var expense_month;
 		var data1=$('#year_for_catwaise_expense').val();
 		var data2=$('#month_for_catwaise_expense').val();
+	
 		switch (data2)
 		{
 			case 'Jan':month=1;
@@ -337,10 +339,8 @@ function DrawPieChart(year,month)
 		}
 		chart2=new Highcharts.Chart(options1);
 	});
-LoadTransactionList();
-	function LoadTransactionList()
-	{
-		$.getJSON('http://162.243.167.245:8081/listtransactiondata?cif='+cif+'&year='+year+'&month='+month,function(jsondata) {
+
+	$.getJSON('http://162.243.167.245:8081/listtransactiondata?cif='+cif+'&year='+year+'&month='+month,function(jsondata) {
 		
 		$('#transactions_table_data').empty();
 		
@@ -377,43 +377,7 @@ LoadTransactionList();
 				*/
 				
 				
-			/*Add tag functionality*/
-				
-			$('.addtag').click(function(){
-				
-				var $this=$(this);
-				var inputbox='<input type="text" class="addTagTextBox"/><a class="saveTag ML-10"><i class="fa fa-check"></i></a><a class="cancelTag ML-10"><i class="fa fa-times"></i></a>'
-				//this.parentElement.parentElement.style.display='none'; not in use
-				$(this).html(inputbox).find('.addTagTextBox').focus();
-				
-				/*Save new added tag*/
-				
-				$('.saveTag').click(function(){
-					var objDesc =$(this).closest("tr").find('td:eq(2)').text();
-					var tagData=$('.addTagTextBox').val();
-					saveUpdatedCategory(objDesc,tagData)
-					//this.parentElement.parentElement.innerHTML=tagData;
-				});
-			
-				$('.cancelTag').click(function(){
-					// //alert("Cancel:-" + $(this).closest("tr").find('td:eq(4)').text());
-					// // alert("Cancel:" + $(this).closest("tr").find('td:eq(2)').text() + ":" + $(this).closest("tr").find('td:eq(4)').text());
-					// // alert($(this).parent().find('.addTagTextBox').val());
-					
-					// var objTagData =$(this).closest("tr").find('td:eq(4)').text();
-					// var temp="";
-					// if(objTagData=="")
-						// temp='<a class="addtag">Add Tag</a>';
-					// else
-					// {
-						// temp='<span class="tagDetails">'+objTagData+'<a href="#" class="MR-10"><i class="addtag fa fa-pencil"></i></a><a href="" class="ML-10 deletetag hide"><i class="fa fa-times"></i></a>';
-						
-					// this.parentElement.parentElement.innerHTML=temp;
-					//$('#transactions_table_data').empty();
-					LoadTransactionList();
-				});
-				
-			});
+			/**/
 			
 			
 			
@@ -448,42 +412,38 @@ LoadTransactionList();
 			
 		});	
 	
+			/*Add tag functionality*/
+				
+			$('.addtag').click(function(){
+				alert("Hi add tag");
+				var $this=$(this);
+				var inputbox='<input type="text" class="addTagTextBox"/><a class="saveTag ML-10"><i class="fa fa-check"></i></a><a class="cancelTag ML-10"><i class="fa fa-times"></i></a>'
+				//this.parentElement.parentElement.style.display='none'; not in use
+				$(this).html(inputbox).find('.addTagTextBox').focus();
+				
+				/*Save new added tag*/
+				
+				$('.saveTag').click(function(){
+				alert("Save");
+				
+				
+				$(this).parent().find('.addTagTextBox').val()
+				
+				var tagData=$('.addTagTextBox').val();
+				this.parentElement.parentElement.innerHTML=tagData;
+				});
 			
+				$('.cancelTag').click(function(){
+				alert("Cancel");
+					alert($(this).parent().find('.addTagTextBox').val());
+					var temp='<a class="addtag">Add Tag</a>';
+					this.parentElement.parentElement.innerHTML=temp;
+				});
+				
+			});
 			
 			
 	});
-	}
-	function saveUpdatedCategory(desc,tag)
-	{		
-		//alert(desc + ":" + tag);
-		var transactionElement = {
-				"DESCRIPTION": desc,
-				"SUBCATEGORY": tag
-			}
-	   jQuery.ajax(
-			{
-			type: 'POST',
-			url : "http://162.243.167.245:8081/updateSubcategory",
-			dataType : "json",
-			contentType: "application/json; charset=utf-8",
-			data: JSON.stringify(transactionElement),
-			success:function(data2) 
-			 { 
-				alert("Success");
-				//$('#transactions_table_data').empty();
-				LoadTransactionList();
-			  //alert(data2);
-				//console.log(data2);
-			 },
-			 error: function(data2) {
-				alert("fail");
-			 //alert(data2); 	
-			 //console.log(data2);
-			 }
-			
-			 });
-			
-	}
 	
 	// average chart 
 	
@@ -553,7 +513,7 @@ LoadTransactionList();
         },
 		 yAxis: {
             title: {
-                text: 'Total Expense (£)'
+                text: 'Total Expense $'
             }
 
         },
@@ -694,7 +654,7 @@ $.getJSON('http://162.243.167.245:8081/getAllMonthExpenses?cif='+cif+'&year='+ye
         },
         yAxis: {
             title: {
-                text: 'Expense (£)'
+                text: 'Expense'
             },
             labels: {
                 formatter: function () {
@@ -753,7 +713,7 @@ $.getJSON('http://162.243.167.245:8081/getAllMonthExpenses?cif='+cif+'&year='+ye
 	$('#addTransaction #addNewTransaction').on('click',function(){	
 		
 		//$('#addTransaction').modal('hide');
-			
+		
 			var amount=$("#amount").val();
 			var description=$("#description").val();
 			var date=$('#date').val();
@@ -810,10 +770,9 @@ $.getJSON('http://162.243.167.245:8081/getAllMonthExpenses?cif='+cif+'&year='+ye
 					success:function(data2) 
 					 { 
 						alert("Success");
-						//location.reload();
-						//$('#transactions_table_data').empty();
-						LoadTransactionList();
-					  
+						location.reload();
+					  //alert(data2);
+						//console.log(data2);
 					 },
 					 error: function(data2) {
 						alert("fail");
@@ -824,20 +783,20 @@ $.getJSON('http://162.243.167.245:8081/getAllMonthExpenses?cif='+cif+'&year='+ye
 					 });
 			
 			
-			// var table = document.getElementById("transactions_table_data");
-			// var row = table.insertRow(-1);
+			var table = document.getElementById("transactions_table_data");
+			var row = table.insertRow(-1);
 			
-			// var checktransaction = row.insertCell(0);
-			// var trans_date = row.insertCell(1);
-			// var trans_desc = row.insertCell(2);
-			// var trans_amount = row.insertCell(3);
-			// var trans_tags = row.insertCell(4);
+			var checktransaction = row.insertCell(0);
+			var trans_date = row.insertCell(1);
+			var trans_desc = row.insertCell(2);
+			var trans_amount = row.insertCell(3);
+			var trans_tags = row.insertCell(4);
 			
-			// checktransaction.innerHTML = checkBoxBtn;
-			// trans_date.innerHTML = date;
-			// trans_amount.innerHTML = amount;
-			// trans_desc.innerHTML = description;
-			// trans_tags.innerHTML = tempTag;
+			checktransaction.innerHTML = checkBoxBtn;
+			trans_date.innerHTML = date;
+			trans_amount.innerHTML = amount;
+			trans_desc.innerHTML = description;
+			trans_tags.innerHTML = tempTag;
 			
 			}
 
@@ -848,7 +807,7 @@ $.getJSON('http://162.243.167.245:8081/getAllMonthExpenses?cif='+cif+'&year='+ye
 	});	
 	
 	$('.addNewtag').click(function(){
-				
+				alert("HI");
 				var $this=$(this);
 				var inputbox='<input type="text" class="addTagTextBox"><a class="saveTag ML-10"><i class="fa fa-check"></i></a><a class="cancelTag ML-10"><i class="fa fa-times"></i></a>'
 				$(this).html(inputbox).find('.addTagTextBox').focus();
@@ -1018,6 +977,7 @@ $('#editTransactionModal #submit').click(function(){
 	GetMonthlyData("2015","6","2016","6");
 
 	function GetMonthlyData(year1,month1,year2,month2){
+	
 			var chartData = [];
 	var chartCategories=[];
 	var expData = [];
@@ -1219,7 +1179,7 @@ $('#editTransactionModal #submit').click(function(){
 		var sum=0;
 			for(var z=0; z< length;z++){
 				var expenses=parseFloat(json1.rows[z].EXPENSES);
-				var catname=json1.rows[z].CATEGORY;
+				var catname=json1.rows[z].CATG_NAME;
 				var monthName=parseInt(month1);
 				monthName=getMonthName(monthName);
 				expData1.push(expenses);
@@ -1236,7 +1196,7 @@ $('#editTransactionModal #submit').click(function(){
 						expData1=[];
 			for(var z=0; z< length;z++){
 				var expenses=parseFloat(json1.rows[z].EXPENSES);
-				var catname=json1.rows[z].CATEGORY;
+				var catname=json1.rows[z].CATG_NAME;
 				var monthName=parseInt(month2);
 			monthName=getMonthName(monthName);
 
