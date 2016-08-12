@@ -102,7 +102,7 @@ $(document).ready(function(){
          		  
          jQuery.ajax(
 				    {
-					 url : "http://159.203.188.5:8082/SpringMVC/ocrservice/read",
+					 url : "http://162.243.171.209:8080/SpringMVC/ocrservice/read",
 					 type: 'POST',
 					 dataType : "json",
 					 contentType: "application/json; charset=utf-8",

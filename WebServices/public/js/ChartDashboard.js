@@ -52,7 +52,7 @@ var cif=prmarr[1];
 	
 function DrawPieChart(year,month)
 {			
-	$.getJSON('http://162.243.167.245:8081/listCategorySubcategoryExpense?cif='+cif+'&year='+year+'&month='+month, function(json1) {
+	$.getJSON('http://162.243.171.209:8081/listCategorySubcategoryExpense?cif='+cif+'&year='+year+'&month='+month, function(json1) {
 		var categories=[];
 		//we will push categories in this variable from received JSON
 		
@@ -214,7 +214,7 @@ function DrawPieChart(year,month)
 	
 	
 	//function()
-	$.getJSON('http://162.243.167.245:8081/getAllMonthExpenses?cif='+cif+'&year='+year, function(json1) {   
+	$.getJSON('http://162.243.171.209:8081/getAllMonthExpenses?cif='+cif+'&year='+year, function(json1) {   
 		var categories=[];
 		//we will push categories in this variable from received JSON
 		
@@ -340,7 +340,7 @@ function DrawPieChart(year,month)
 LoadTransactionList();
 	function LoadTransactionList()
 	{
-		$.getJSON('http://162.243.167.245:8081/listtransactiondata?cif='+cif+'&year='+year+'&month='+month,function(jsondata) {
+		$.getJSON('http://162.243.171.209:8081/listtransactiondata?cif='+cif+'&year='+year+'&month='+month,function(jsondata) {
 		
 		$('#transactions_table_data').empty();
 		
@@ -463,7 +463,7 @@ LoadTransactionList();
 	   jQuery.ajax(
 			{
 			type: 'POST',
-			url : "http://162.243.167.245:8081/updateSubcategory",
+			url : "http://162.243.171.209:8081/updateSubcategory",
 			dataType : "json",
 			contentType: "application/json; charset=utf-8",
 			data: JSON.stringify(transactionElement),
@@ -487,7 +487,7 @@ LoadTransactionList();
 	
 	// average chart 
 	
-	$.getJSON('http://162.243.167.245:8081/AvgSpendCategory?cif='+cif, function(json1) {
+	$.getJSON('http://162.243.171.209:8081/AvgSpendCategory?cif='+cif, function(json1) {
 	     var seriesdata1=[];
 		 var drilleddata1=[];
 		 var drilleddowndata1=[];
@@ -585,7 +585,7 @@ LoadTransactionList();
 
 //Spline with symbol chart
 
-$.getJSON('http://162.243.167.245:8081/getAllMonthExpenses?cif='+cif+'&year='+year, function(json1) {   
+$.getJSON('http://162.243.171.209:8081/getAllMonthExpenses?cif='+cif+'&year='+year, function(json1) {   
 		var categories=[];
 		//we will push categories in this variable from received JSON
 		var data2=[];
@@ -636,7 +636,7 @@ $.getJSON('http://162.243.167.245:8081/getAllMonthExpenses?cif='+cif+'&year='+ye
 			var year1=(year-1);
 			
 			//alert(year1);
-			$.getJSON('http://162.243.167.245:8081/getAllMonthExpenses?cif='+cif+'&year='+year1, function(json2) {   
+			$.getJSON('http://162.243.171.209:8081/getAllMonthExpenses?cif='+cif+'&year='+year1, function(json2) {   
 			//we will push categories in this variable from received JSON
 			var length=json2.rows.length;
 			var monthlyExpenses=new Object();
@@ -802,7 +802,7 @@ $.getJSON('http://162.243.167.245:8081/getAllMonthExpenses?cif='+cif+'&year='+ye
 				    {
 					type: 'POST',
 					//url : "http://localhost:8082/addTransactions",
-					url : "http://162.243.167.245:8081/addTransactions",
+					url : "http://162.243.171.209:8081/addTransactions",
 					dataType : "json",
 					contentType: "application/json; charset=utf-8",
 					data: JSON.stringify(transactionCollection),
@@ -936,7 +936,7 @@ $('#editTransactionModal #submit').click(function(){
 		jQuery.ajax(	
 				    {
 					type: 'POST',
-					url : "http://162.243.167.245:8081/updateSubcategory",
+					url : "http://162.243.171.209:8081/updateSubcategory",
 					dataType : "json",
 					contentType: "application/json; charset=utf-8",
 					data: {"DESCRIPTION": "ISLINGTON POST OFFICE","SUBCATEGORY": "POSTAL EXPENSES"},
@@ -1021,7 +1021,7 @@ $('#editTransactionModal #submit').click(function(){
 			var chartData = [];
 	var chartCategories=[];
 	var expData = [];
-		$.getJSON('http://162.243.167.245:8081/listExpensesByWeek?cif='+cif+'&year='+year1+'&month='+month1, function(json1){
+		$.getJSON('http://162.243.171.209:8081/listExpensesByWeek?cif='+cif+'&year='+year1+'&month='+month1, function(json1){
 
 			var monthName,weekName;
 			switch(month1){
@@ -1103,7 +1103,7 @@ $('#editTransactionModal #submit').click(function(){
 				}
 
 				///////////////Second year data get
-		$.getJSON('http://162.243.167.245:8081/listExpensesByWeek?cif='+cif+'&year='+year2+'&month='+month2, function(json1) {				
+		$.getJSON('http://162.243.171.209:8081/listExpensesByWeek?cif='+cif+'&year='+year2+'&month='+month2, function(json1) {				
 					
 			var monthNumber,weekName;
 			var length=json1.rows.length;
@@ -1211,7 +1211,7 @@ $('#editTransactionModal #submit').click(function(){
 	var chartCategories1=[];
 	var expData1 = [];
 	
-	$.getJSON('http://162.243.167.245:8081/listExpensesByCategoryMonthly?cif='+cif+'&year='+year1+'&month='+month1, function(json1) {
+	$.getJSON('http://162.243.171.209:8081/listExpensesByCategoryMonthly?cif='+cif+'&year='+year1+'&month='+month1, function(json1) {
 
 		var length=json1.rows.length;
 		//length=2;
@@ -1228,7 +1228,7 @@ $('#editTransactionModal #submit').click(function(){
 				}
 				}
 				
-	$.getJSON('http://162.243.167.245:8081/listExpensesByCategoryMonthly?cif='+cif+'&year='+year2+'&month='+month2, function(json1) {
+	$.getJSON('http://162.243.171.209:8081/listExpensesByCategoryMonthly?cif='+cif+'&year='+year2+'&month='+month2, function(json1) {
 	
 		var length=json1.rows.length;
 
@@ -1331,7 +1331,7 @@ $('#editTransactionModal #submit').click(function(){
 		if($('#user_details').hasClass('hide'))
 		{
 			$('#user_details').removeClass('hide');
-			$.getJSON('http://162.243.167.245:8081/listCustomerDetails?cif='+cif+'',function(json1){
+			$.getJSON('http://162.243.171.209:8081/listCustomerDetails?cif='+cif+'',function(json1){
 				var cust_name=json1.rows[0].Cust_Name;
 				var cust_contact=json1.rows[0].Cust_Contact;
 				var cust_email=json1.rows[0].Cust_Email;
@@ -1353,7 +1353,7 @@ $('#editTransactionModal #submit').click(function(){
 	
 	$('#dashboard-container').click(function(){
 
-		$.getJSON('http://162.243.167.245:8081/listCustomerDetails?cif='+cif+'',function(json1){
+		$.getJSON('http://162.243.171.209:8081/listCustomerDetails?cif='+cif+'',function(json1){
 		
 				var cust_name=json1.rows[0].Cust_Name;
 				var cust_contact=json1.rows[0].Cust_Contact;

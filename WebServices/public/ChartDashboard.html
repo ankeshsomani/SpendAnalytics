@@ -31,9 +31,9 @@
 			  $(".spmonth2").show(); 
 			    $(".spyear1").show(); 
 			  $(".spmonth1").show(); 
-			 
+			  $(".expense").css("margin-left","30em");
 			    $("#go").show(); 
-			   $("select").css("margin-top","1em");
+			  
 			 });
 			 
 			 	 $('.topdown').click(function(){
@@ -51,8 +51,8 @@
 			    $(".spyear1").hide(); 
 			  $(".spmonth1").hide(); 
 			   $("#go").hide(); 
-			 
-			   $("select").css("margin-top","-1em");
+			 $(".expense").css("margin-left","30em");
+			  
 			 });
 			 
 			 	  $('.yr').click(function(){
@@ -87,7 +87,7 @@
 			    $(".spyear1").hide(); 
 			  $(".spmonth1").hide(); 
 			   $("#go").hide(); 
-			 
+			  $(".expense").css("margin-left","37em");
 			   $("select").css("margin-top","-1em");
 			 });
 			 
@@ -152,14 +152,14 @@
 						
                              <div class="modal-body">
                                  <ul class="nav navbar-navb">
-                              	<li><a href="javascript:void(0)"  data-dismiss="modal" href="javascript:void(0)" class="showChart" data-rel="#pie_chart_section"><table class="iconmenu"><tbody><tr><td><img src="img/piechart.png" width="16px" /></td><td>Expense Percentage</td></tr></tbody></table></a></li>
-								<li><a href="javascript:void(0)"  data-dismiss="modal" class="showChart" data-rel="#bar_chart_section"><table class="iconmenu"><tbody><tr><td><img src="img/monthexp_icn.png" width="16px" /></td><td>Monthly Expense</td></tr></tbody></table></a></li>
-								<li><a href="javascript:void(0)"  data-dismiss="modal" class="showChart" data-rel="#line-chart-section"><table class="iconmenu"><tbody><tr><td><img src="img/weekCompare_icn.png" width="16px" /></td><td>Weekly Comparison</td></tr></tbody></table></a></li>
-								<li><a href="javascript:void(0)"   data-dismiss="modal" class="showChart" data-rel="#combination-chart-section"><table class="iconmenu"><tbody><tr><td><img src="img/catgCompare_icn.png" width="16px" /></td><td>Categorywise Comparison</td></tr></tbody></table></a></li>
-								<li><a href="javascript:void(0)"  data-dismiss="modal" class="showChart" data-rel="#transaction-div"><table class="iconmenu"><tbody><tr><td><img src="img/transSummary_icn.png" width="16px" /></td><td>Transaction Summary</td></tr></tbody></table></a></li>
-								<li><a href="javascript:void(0)"  data-dismiss="modal"  class="showChart" data-rel="#average_chart_section"><table class="iconmenu"><tbody><tr><td><img src="img/avg%20expense.png" width="16px" /></td><td> Total Yearly Expense</td></tr></tbody></table></a></li>
-								<li><a href="javascript:void(0)"  data-dismiss="modal" class="showChart" data-rel="#SplinewithSymbol-chart-section"><table class="iconmenu"><tbody><tr><td><img src="img/monthly%20variation.png" width="16px" /></td><td> Monthly Comparison </td></tr></tbody></table></a></li>
-								<li><a href="javascript:void(0)"  data-dismiss="modal" class="showChart" data-rel="#UploadStatement-chart-section"><table class="iconmenu"><tbody><tr><td><img src="img/ic_file_upload_black_24dp.png" width="16px" /></td><td> Upload Statement</td></tr></tbody></table></a></li>
+                              <li class="clk"><a href="javascript:void(0)"  data-dismiss="modal" href="javascript:void(0)" class="showChart shd" data-rel="#pie_chart_section"><table class="iconmenu"><tbody><tr><td><i class="fa fa-pie-chart" aria-hidden="true"></i></td><td>Expense Percentage</td></tr></tbody></table></a></li>
+								<li class="clk"><a href="javascript:void(0)"  data-dismiss="modal" class="showChart wkcom" data-rel="#bar_chart_section"><table class="iconmenu"><tbody><tr><td><i class="fa fa-bar-chart" aria-hidden="true"></i></td><td>Monthly Expense</td></tr></tbody></table></a></li>
+								<li class="clk"><a href="javascript:void(0)"  data-dismiss="modal" class="showChart wkcom" data-rel="#line-chart-section"><table class="iconmenu"><tbody><tr><td><img src="img/weekCompare_icn.png" width="16px" /></td><td>Weekly Comparison</td></tr></tbody></table></a></li>
+								<li class="clk"><a href="javascript:void(0)"   data-dismiss="modal" class="showChart shd" data-rel="#combination-chart-section"><table class="iconmenu"><tbody><tr><td><i class="fa fa-align-left" aria-hidden="true"></i></td><td>Categorywise Comparison</td></tr></tbody></table></a></li>
+								<li class="clk"><a href="javascript:void(0)"  data-dismiss="modal" class="showChart shd" data-rel="#transaction-div"><table class="iconmenu"><tbody><tr><td><img src="img/transSummary_icn.png" width="16px" /></td><td>Transaction Summary</td></tr></tbody></table></a></li>
+								<li class=" yrmn clk"><a href="javascript:void(0)"  data-dismiss="modal"  class="showChart" data-rel="#average_chart_section"><table class="iconmenu"><tbody><tr><td><img src="img/avg expense.png" width="16px" /></td><td> Total Yearly Expense</td></tr></tbody></table></a></li>
+								<li class="clk"><a href="javascript:void(0)"  data-dismiss="modal" class="showChart yryr" data-rel="#SplinewithSymbol-chart-section"><table class="iconmenu"><tbody><tr><td><img src="img/monthly variation1.png" width="16px" /></td><td> Monthly Comparison </td></tr></tbody></table></a></li>
+								<li class="clk"><a href="javascript:void(0)"  data-dismiss="modal" class="showChart" data-rel="#UploadStatement-chart-section"><table class="iconmenu"><tbody><tr><td><i class="fa fa-upload" aria-hidden="true"></i></td><td> Upload Statement</td></tr></tbody></table></a></li>
                                   </ul>
                              </div>
                             
@@ -187,6 +187,8 @@
 								<li><a href="#referfriends"  data-dismiss="modal"><table class="iconmenu"><tbody><tr><td><img class="img-responsive" src="img/refer_icn.png" alt="bar" width="20px"/></td><td> Refer Friends</td></tr></tbody></table></a></li>
 								<li><a href="#Notification"  data-dismiss="modal"><table class="iconmenu"><tbody><tr><td><img class="img-responsive" src="img/notification_icn.png" alt="bar" width="20px"/></td><td> Notifications</td></tr></tbody></table></a></li>
 								<li><a href="#Settings"  data-dismiss="modal"><table class="iconmenu"><tbody><tr><td><img class="img-responsive" src="img/setting_icn.png" alt="bar" width="20px"/></td><td> Settings</td></tr></tbody></table></a></li>
+								
+								<li><a href="http://localhost:8082/login.html"  data-dismiss="modal"><table class="iconmenu"><tbody><tr><td><img class="img-responsive" src="img/logouot_icn.png" alt="bar" width="20px"/></td><td> Logout</td></tr></tbody></table></a></li>
                                   </ul>
                              </div>
                             
@@ -339,8 +341,8 @@
                          <div class="expense">
                            <p class="title">
                            <span class="pounddata">Total Expense : &#163; <span id="total_expense_val"></span></span></p>
-                    </div> </td><td><div class="topdowns"><i class="fa fa-chevron-down fa-2x topdown" aria-hidden="true"></i>
-					<i class="fa fa-chevron-up fa-2x topdown1" aria-hidden="true"></i></div></td></tr></tbody></table>
+                    </div> </td><td><div class="topdowns">
+					<i class="fa fa-chevron-up fa-2x topdown1" aria-hidden="true" style="color:white"></i></div></td></tr></tbody></table>
                 </div>
            
             </div>
@@ -356,15 +358,15 @@
 						<div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#pie-chart" aria-expanded="true" aria-controls="pie-chart">
 							<h4 class="panel-title">
 								<a role="button" >
-								  Expense Percentage 
+								  Expense Percentage  <span class="help-text">(* Click Category on pie chart to view its sub-category partition.)</span>
 								</a>
                                 <span><img src="img/dwnarw_icn.png" class="iconarrow" alt="Cinque Terre" width="15" height="15"></span>
 							</h4>
 						</div>
 						<div id="pie-chart" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 							<div class="panel-body">
-								<div class="help-text">* Click Category on pie chart to view its sub-category partition.</div>
 								<div class="" id="pie-chart"></div>
+							
 							</div>
 						</div>
 					</div>
@@ -405,15 +407,7 @@
                                             <thead>
                                                 <tr>
                                                     <th><button type="button" class="btn btn-primary pull-left addTransactBtn" data-toggle="modal" data-target="#addTransaction">Add Transaction</button></th>
-                                                    <th>
-                                                        <div class="input-group searchBtn">
-                                                           <div class="input-group margin-bottom-sm searchBtn">
-                                                          <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
-                                                          <input type="text" class="form-control" id="search" placeholder="Search">
-                                                        </div>
-                                                        </div>
-                                                        
-                                                    </th>
+                                                  
                                                    
                                                 </tr>
                                             </thead>
@@ -487,7 +481,7 @@
 								</div>
 								<div class="form-group"> 
 									<label for="date MT-15">
-										Date (dd-mm-yyyy)
+										Date (dd-MON-yy)
 									</label>
 									<input type="text" class="form-control" id="date" />
 								</div>
@@ -511,7 +505,7 @@
 									<label for="account">
 										Account
 									</label>
-									<select class="form-control">
+									<select class="form-control" >
 										<option>Credit Card</option>
 										<option>Debit Card</option>
 										<option>Travel Card</option>
@@ -604,7 +598,7 @@
 					<div id='loader' style='display:none;position:absolute;'><img src='img/loader.gif' style="background-attachment: fixed;background-position: center"/></div>
 
 					<div class="panel panel-default chart_section">
-						<div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseTransSumm" aria-expanded="true" aria-controls="collapseTransSumm">
+						<div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#UploadStatemen" aria-expanded="true" aria-controls="UploadStatemen">
 							<h4 class="panel-title">
 								<a role="button" >
 								  Upload Statement
@@ -612,7 +606,7 @@
                                  <span><img src="img/dwnarw_icn.png" class="iconarrow" alt="Cinque Terre" width="15" height="15"></span>
 							</h4>
 						</div>
-						<div id="collapseTransSumm" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+						<div id="UploadStatemen" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 							<div class="panel-body">
 								<div class="col-xs-12 col-md-12 datapadding">
                                     <div class=" MT-15">
@@ -660,12 +654,12 @@
 			
 				<ul class="footer-menu">
 					<li class="toggleThis clk"><a href="javascript:void(0)" class="showChart shd" data-rel="#pie_chart_section"><img src="img/piechart.png" class="img-responsive icmob" /></a></li>
-					<li class="toggleThis clk"><a href="javascript:void(0)" class="showChart yr" data-rel="#bar_chart_section"><img src="img/monthexp_icn.png" class="img-responsive icmob" /></a></li>
+					<li class="toggleThis clk"><a href="javascript:void(0)" class="showChart yr" data-rel="#bar_chart_section"><img src="img/monthexp_icn1.png" class="img-responsive icmob" /></a></li>
 					<li class="clk"><a href="javascript:void(0)" class="showChart wkcom" data-rel="#line-chart-section "><img src="img/weekCompare_icn.png" class="img-responsive icmob" /></a></li>
 					<li class="clk"><a href="javascript:void(0)" class="showChart wkcom" data-rel=" #combination-chart-section"><img src="img/catgCompare_icn.png" class="img-responsive icmob" /></a></li>
 					<li class="toggleThis clk"><a href="javascript:void(0)" class="showChart shd" data-rel="#transaction-div"><img src="img/transSummary_icn.png" class="img-responsive icmob" /></a></li>
-					<li class="toggleThis yrmn clk"><a href="javascript:void(0)" class="showChart shd" data-rel="#average_chart_section"><img src="img/avg%20expense.png" class="img-responsive icmob" /></a></li>
-					<li class="clk"><a href="javascript:void(0)" class="showChart yryr" data-rel="#SplinewithSymbol-chart-section"><img src="img/monthly%20variation.png" class="img-responsive icmob" /></a></li>
+					<li class="toggleThis yrmn clk"><a href="javascript:void(0)" class="showChart shd" data-rel="#average_chart_section"><img src="img/avg expense.png" class="img-responsive icmob" /></a></li>
+					<li class="clk"><a href="javascript:void(0)" class="showChart yryr" data-rel="#SplinewithSymbol-chart-section"><img src="img/monthly variation1.png" class="img-responsive icmob" /></a></li>
 					<li class="clk"><a href="javascript:void(0)" class="showChart " data-rel="#UploadStatement-chart-section"><img src="img/ic_file_upload_black_24dp.png" class="img-responsive upimg" /></a></li>
 					
 					

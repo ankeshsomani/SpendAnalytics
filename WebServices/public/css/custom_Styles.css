@@ -75,7 +75,8 @@
     position: relative !important;
     margin-top: 4.6em !important;
     /* float: right !important; */
-    margin-left: 52em;
+	BACKGROUND:#424242;
+    margin-left: 50em;
     width: 230px;
     max-width: 230px;
 }
@@ -167,7 +168,7 @@
 {
        margin-top: 4.6em;
     min-width: 40px;
-    margin-left: 52em;
+    margin-left: 50em;
     /* float: right; */
     width: 200px;
 	 background: #424242 !important;
@@ -176,7 +177,7 @@
      .navbar-inverse .navbar-navb>li>a:focus, .navbar-inverse .navbar-navb>li>a:hover
     {
       background: none !important;
-      color: #408CFA !important;
+      color: white !important;
     }
     .modal-footer>ul>li>a
     {
@@ -241,7 +242,7 @@
 }
 .expense
 {
-        margin-left: 49em;
+        margin-left: 37em;
 }
 #go
 {   margin-left: 15px;
@@ -295,8 +296,8 @@ footer
 	width:100%;
 } 
 .footer-menu li
-{   padding-right: 46px !important;
-    padding-left: 46px !important;
+{   padding-right: 31px !important;
+    padding-left: 31px !important;
 }
 	
 	.panel-group
